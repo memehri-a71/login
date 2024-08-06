@@ -1,4 +1,4 @@
-import { Formik } from "formik";
+import { Form, Formik } from "formik";
 
 export const FormikWrapper = ({
   initialValues,
@@ -9,11 +9,12 @@ export const FormikWrapper = ({
   <Formik
     initialValues={initialValues}
     validationSchema={validationSchema}
-    enableReinitialize
     onSubmit={onSubmit}
   >
-    {() => {
-      return children;
-    }}
+    {() => (
+      <Form>
+        {children}
+      </Form>
+    )}
   </Formik>
 );
