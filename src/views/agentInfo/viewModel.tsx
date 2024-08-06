@@ -1,7 +1,7 @@
 import { useAuthContextValue } from "../../context/authContextValue";
 import * as yup from "yup";
 import { axiosPost } from "../../configs/httpService/httpService";
-import {  VALIDATE_OTP } from "../../constants/endPoints";
+import { VALIDATE_OTP } from "../../constants/endPoints";
 import { useMutation } from "@tanstack/react-query";
 
 export const useAgentInfoViewModel = () => {
@@ -9,21 +9,21 @@ export const useAgentInfoViewModel = () => {
   const initialValues = {
     address: "",
     agencyType: "",
+    province: "",
     agencyCode: "",
     insuranceBranch: "",
     phone: "",
     cityCode: "",
-    province: "",
     city: "",
   };
   const validationSchema = yup.object({
     address: yup.string().required("این فیلد الزامی است."),
     agencyType: yup.string().required("این فیلد الزامی است."),
+    province: yup.string().required("این فیلد الزامی است."),
     agencyCode: yup.string().required("این فیلد الزامی است."),
     insuranceBranch: yup.string().required("این فیلد الزامی است."),
     phone: yup.string().required("این فیلد الزامی است."),
     cityCode: yup.string().required("این فیلد الزامی است."),
-    province: yup.string().required("این فیلد الزامی است."),
     city: yup.string().required("این فیلد الزامی است."),
   });
 
@@ -42,5 +42,11 @@ export const useAgentInfoViewModel = () => {
     await setCurStep("userInfo");
     await mutateAsync(body as any);
   };
-  return { initialValues, validationSchema, onSubmit, isPending };
+
+  return {
+    initialValues,
+    validationSchema,
+    onSubmit,
+    isPending,
+  };
 };

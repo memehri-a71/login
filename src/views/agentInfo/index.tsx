@@ -10,7 +10,7 @@ export const AgentInfo = () => {
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      <AgentInfoView />
+      <AgentInfoView/>
     </AuthLayout>
   );
 };
