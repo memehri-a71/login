@@ -1,9 +1,9 @@
 import { Button } from "@mui/material";
-import { Children } from "../../types/common";
 
-export const CustomButton = ({ children }: Children) => {
+export const CustomButton = (props:any) => {
+  const { children, type = "submit" } = props;
   return (
-    <Button variant="contained" fullWidth color="success">
+    <Button type={type} variant="contained" fullWidth color="success">
       {children}
     </Button>
   );
