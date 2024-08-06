@@ -9,7 +9,7 @@ export const AgentInfoView = ({ handleSearchAgentCode }) => {
   return (
     <div className="flex flex-col items-center gap-6 pt-4 pb-10">
       <FormikTextField
-        name="agentCode"
+        name="agencyCode"
         placeholder="کد نمایندگی"
         onChange={(e) => handleSearchAgentCode(e.target.value)}
       />
@@ -36,7 +36,15 @@ export const AgentInfoView = ({ handleSearchAgentCode }) => {
         </div>
       </div>
       <FormikRadio name="agencyType" />
-      {/* <FormikTextField name="agencyType" placeholder="نوع نمایندگی" />  */}
+      <div
+        className={`overflow-hidden transition-all duration-1000 w-full ${
+          values?.agencyType == "legal"
+            ? "opacity-100 translate-y-5 h-fit"
+            : "opacity-0 h-2"
+        }`}
+      >
+        <FormikTextField name="agencyName" placeholder="نوع نمایندگی" />
+      </div>
     </div>
   );
 };
