@@ -3,12 +3,16 @@ import { FormikAutoComplete } from "../../components/elements/autoComplete/formi
 import { FormikTextField } from "../../components/elements/textField/formikTextField";
 import { FormikRadio } from "../../components/elements/radio/formikRadio";
 
-export const AgentInfoView = () => {
+export const AgentInfoView = ({ handleSearchAgentCode }) => {
   const { values } = useFormikContext();
 
   return (
     <div className="flex flex-col items-center gap-6 pt-4 pb-10">
-      <FormikTextField name="agentCode" placeholder="کد نمایندگی" />
+      <FormikTextField
+        name="agentCode"
+        placeholder="کد نمایندگی"
+        onChange={(e) => handleSearchAgentCode(e.target.value)}
+      />
       <FormikAutoComplete
         name="province"
         optionLabel="title"
