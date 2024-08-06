@@ -9,23 +9,30 @@ export const useAgentInfoViewModel = () => {
   const { curStep, setCurStep } = useAuthContextValue();
   const initialValues = {
     address: "",
-    agencyType: "",
     province: "",
     agencyCode: "",
     insuranceBranch: "",
     phone: "",
     cityCode: "",
     city: "",
+    agencyType: "legal",
+    agencyName: "",
   };
   const validationSchema = yup.object({
     agencyCode: yup.number().required("این فیلد الزامی است."),
     address: yup.string().required("این فیلد الزامی است."),
-    agencyType: yup.string().required("این فیلد الزامی است."),
     province: yup.string().required("این فیلد الزامی است."),
     insuranceBranch: yup.string().required("این فیلد الزامی است."),
     phone: yup.string().required("این فیلد الزامی است."),
     cityCode: yup.string().required("این فیلد الزامی است."),
     city: yup.string().required("این فیلد الزامی است."),
+    agencyType: yup.string().required("این فیلد الزامی است."),
+    agencyName: yup.string().when("agencyType", ([value]) => {
+      if (value=='legal') {
+        return yup.string().required("این فیلد الزامی است.");
+      }
+      return yup.string();
+    }),
   });
 
   const handleSearch = async (body): Promise<void> => {
