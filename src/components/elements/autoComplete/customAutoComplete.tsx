@@ -4,9 +4,19 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 import { axiosGet } from "../../../configs/httpService/httpService";
+import { HelperText } from "../helperText";
 
 export const CustomAutoComplete = (props) => {
-  const { onChange, url, optionLabel, placeholder, disabled, name } = props;
+  const {
+    onChange,
+    url,
+    optionLabel,
+    placeholder,
+    disabled,
+    name,
+    error,
+    helperText,
+  } = props;
   const [open, setOpen] = useState(false);
 
   const { data: options = [], isLoading } = useQuery({
@@ -20,38 +30,44 @@ export const CustomAutoComplete = (props) => {
   const handleClose = () => setOpen(false);
 
   return (
-    <Autocomplete
-      open={open}
-      onOpen={handleOpen}
-      onClose={handleClose}
-      options={Array.isArray(options) ? options : [options]}
-      getOptionLabel={(option) => option[optionLabel]}
-      fullWidth
-      size="small"
-      disabled={disabled}
-      loading={isLoading}
-      onChange={(_event, newValue): void => {
-        onChange?.(newValue);
-      }}
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          variant="outlined"
-          placeholder={placeholder}
-          InputProps={{
-            ...params.InputProps,
-            endAdornment: (
-              <>
-                {isLoading ? (
-                  <CircularProgress color="inherit" size={20} />
-                ) : null}
-                {params.InputProps.endAdornment}
-              </>
-            ),
-          }}
-        />
-      )}
-    />
+    <div className="w-full">
+      <Autocomplete
+        {...props}
+        open={open}
+        onOpen={handleOpen}
+        onClose={handleClose}
+        options={Array.isArray(options) ? options : [options]}
+        getOptionLabel={(option) =>
+          option[optionLabel] ? option[optionLabel] : ""
+        }
+        fullWidth
+        size="small"
+        disabled={disabled}
+        loading={isLoading}
+        onChange={(_event, newValue): void => {
+          onChange?.(newValue);
+        }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            variant="outlined"
+            placeholder={placeholder}
+            InputProps={{
+              ...params.InputProps,
+              endAdornment: (
+                <>
+                  {isLoading ? (
+                    <CircularProgress color="inherit" size={20} />
+                  ) : null}
+                  {params.InputProps.endAdornment}
+                </>
+              ),
+            }}
+          />
+        )}
+      />
+      {error ? <HelperText>{helperText}</HelperText> : null}
+    </div>
   );
 };
 
