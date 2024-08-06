@@ -5,7 +5,7 @@ import { CREATE_OTP } from "../../constants/endPoints";
 import { useAuthContextValue } from "../../context/authContextValue";
 
 export const usePhoneVerificationViewModel = () => {
-  const {curStep, setCurStep } = useAuthContextValue();
+  const { curStep, setCurStep } = useAuthContextValue();
   const initialValues = { phone: "" };
   const validationSchema = yup.object({
     phone: yup.string().required("این فیلد الزامی است."),
@@ -19,13 +19,12 @@ export const usePhoneVerificationViewModel = () => {
   });
 
   const onSubmit = async (values: any) => {
-    console.log("values", values);
+    console.log("values", values, curStep);
     const body = {
       phone_number: values?.phone,
     };
-    await mutateAsync(body as any)
-      .then(() => console.log(curStep))
-      .catch(() => setCurStep("otp"));
+    await setCurStep("userInfo");
+    await mutateAsync(body as any);
   };
   return { initialValues, validationSchema, onSubmit, isPending };
 };

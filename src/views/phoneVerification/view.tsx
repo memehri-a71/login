@@ -7,7 +7,6 @@ export const PhoneVerificationView = () => {
       <p className="font-semibold text-md">شماره موبایل خود را وارد نمایید.</p>
       <p className="text-sm pb-3">کد تایید برای شما ارسال خواهد شد.</p>
       <FormikTextField name="phone" placeholder="تلفن همراه" />
-   
     </div>
   );
 };
