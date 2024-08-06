@@ -1,18 +1,15 @@
 import "./App.css";
 import { Providers } from "./configs/providers";
-import { Address } from "./views/address";
-import { Name } from "./views/name";
-import { Phone } from "./views/phone";
+import { Login } from "./views/login";
+import { PhoneVerification } from "./views/phoneVerification";
 
 function App() {
   return (
     <Providers>
       <div className="">
-        {/* <Phone/> */}
-        {/* <Name/> */}
-        <Address />
+        <Login />
       </div>
-    </Providers>
+     </Providers>
   );
 }
 
