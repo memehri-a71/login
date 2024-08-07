@@ -1,14 +1,17 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Providers } from "./configs/providers";
 import { Login } from "./views/login";
 
 function App() {
   return (
-    <Providers>
-      <div className="">
-        <Login />
-      </div>
-    </Providers>
+    <BrowserRouter>
+      <Providers>
+        <Routes>
+          <Route path="/" element={<Login />} />
+        </Routes>
+      </Providers>
+    </BrowserRouter>
   );
 }
 
