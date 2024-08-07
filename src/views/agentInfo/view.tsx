@@ -2,9 +2,12 @@ import { useFormikContext } from "formik";
 import { FormikAutoComplete } from "../../components/elements/autoComplete/formikAutoComplete";
 import { FormikTextField } from "../../components/elements/textField/formikTextField";
 import { FormikRadio } from "../../components/elements/radio/formikRadio";
-import { CustomRadio } from "../../components/elements/radio/customRadio";
+import { AsyncFormikAutoComplete } from "../../components/elements/asyncFormikAutoComplete/asyncFormikAutoComplete";
 
-export const AgentInfoView = ({ handleSearchAgentCode }) => {
+export const AgentInfoView = ({
+  handleSearchAgentCode,
+  handleSearchInsuranceBranch,
+}) => {
   const { values } = useFormikContext();
 
   return (
@@ -16,18 +19,26 @@ export const AgentInfoView = ({ handleSearchAgentCode }) => {
       />
       <FormikAutoComplete
         name="province"
-        optionLabel="title"
-        url="https://jsonplaceholder.typicode.com/posts"
+        optionLabel="name"
+        url="https://stage-api.sanaap.co/base/provinces_wop/"
         placeholder="استان"
       />
+
       <FormikAutoComplete
         name="city"
-        optionLabel="title"
-        url={`https://jsonplaceholder.typicode.com/posts/${values?.province?.id}`}
+        optionLabel="name"
+        url={`https://stage-api.sanaap.co/base/counties_wop/?province=${values?.province?.id}`}
         disabled={!values?.province}
         placeholder="شهر"
       />
       <FormikTextField name="address" placeholder="آدرس" multiline rows={4} />
+
+      <FormikAutoComplete
+        name="insuranceBranch"
+        optionLabel="name"
+        placeholder="شعبه بیمه"
+      />
+
       <div className="grid grid-cols-6 gap-2 w-full">
         <div className="col-span-4">
           <FormikTextField name="cityCode" placeholder="کد شهر" />

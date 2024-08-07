@@ -3,15 +3,23 @@ import { AgentInfoView } from "./view";
 import { useAgentInfoViewModel } from "./viewModel";
 
 export const AgentInfo = () => {
-  const { initialValues, validationSchema, onSubmit, handleSearchAgentCode } =
-    useAgentInfoViewModel();
+  const {
+    initialValues,
+    validationSchema,
+    onSubmit,
+    handleSearchAgentCode,
+    handleSearchInsuranceBranch,
+  } = useAgentInfoViewModel();
   return (
     <AuthLayout
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      <AgentInfoView handleSearchAgentCode={handleSearchAgentCode} />
+      <AgentInfoView
+        handleSearchAgentCode={handleSearchAgentCode}
+        handleSearchInsuranceBranch={handleSearchInsuranceBranch}
+      />
     </AuthLayout>
   );
 };
