@@ -13,19 +13,19 @@ export const axiosGet = async ({ url }): Promise<any> => {
 };
 
 export const axiosPost = async ({ url, body }): Promise<any> => {
-  console.log(body);
+  const res = await axios.post(
+    url,
+    body
+    //    {
+    //   headers: {
+    //    'Content-Type': 'application/json',
 
-  const res = await axios.post(url, body,
-  //    {
-  //   headers: {
-  //    'Content-Type': 'application/json',
-      
-  //       'Access-Control-Allow-Methods': 'OPTIONS,POST',
-  //       'Access-Control-Allow-Credentials': true,
-  //       'Access-Control-Allow-Origin': '*',
-  //       'X-Requested-With': '*',
-  //   },
-  // }
-);
+    //       'Access-Control-Allow-Methods': 'OPTIONS,POST',
+    //       'Access-Control-Allow-Credentials': true,
+    //       'Access-Control-Allow-Origin': '*',
+    //       'X-Requested-With': '*',
+    //   },
+    // }
+  );
   return res.data;
 };

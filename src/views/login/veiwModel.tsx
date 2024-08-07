@@ -1,18 +1,15 @@
-import { useEffect } from "react";
-import { useAuthContextValue } from "../../context/authContextValue";
+import { useAuthContextValue } from "../../context/authContext/authContextValue";
 import { PhoneVerification } from "./phoneVerification";
 import { UserInfo } from "./useInfo";
 
-
 export const useLoginVeiwModel = () => {
-  debugger;
   const { curStep } = useAuthContextValue();
+  console.log("curStep", curStep);
 
   const routeStepMapping = {
     phone: PhoneVerification,
     userInfo: UserInfo,
   };
-
 
   const CurrentAuthComponent = routeStepMapping[curStep];
 

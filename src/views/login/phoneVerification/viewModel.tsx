@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import * as yup from "yup";
 import { axiosPost } from "../../../configs/httpService/httpService";
 import { CREATE_OTP } from "../../../constants/endPoints";
-import { useAuthContextValue } from "../../../context/authContextValue";
+import { useAuthContextValue } from "../../../context/authContext/authContextValue";
 
 export const usePhoneVerificationViewModel = () => {
   const { curStep, setCurStep } = useAuthContextValue();
@@ -19,12 +19,12 @@ export const usePhoneVerificationViewModel = () => {
   });
 
   const onSubmit = async (values: any) => {
-    console.log("values", values, curStep);
+    console.log("values", values);
     const body = {
       phone_number: values?.phone,
     };
-    await setCurStep("userInfo");
-    await mutateAsync(body as any);
+     setCurStep("userInfo");
+    // await mutateAsync(body as any);
   };
   return { initialValues, validationSchema, onSubmit, isPending };
 };
