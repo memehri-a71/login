@@ -1,8 +1,8 @@
 import { useFormikContext } from "formik";
-import { FormikAutoComplete } from "../../components/elements/autoComplete/formikAutoComplete";
-import { FormikTextField } from "../../components/elements/textField/formikTextField";
-import { FormikRadio } from "../../components/elements/radio/formikRadio";
-import { AsyncFormikAutoComplete } from "../../components/elements/asyncFormikAutoComplete/asyncFormikAutoComplete";
+import { FormikAutoComplete } from "../../../components/elements/autoComplete/formikAutoComplete";
+import { FormikTextField } from "../../../components/elements/textField/formikTextField";
+import { FormikRadio } from "../../../components/elements/radio/formikRadio";
+import { COUNTRIES_WOP, PROVINCES_WOP } from "../../../constants/endPoints";
 
 export const AgentInfoView = ({
   handleSearchAgentCode,
@@ -20,14 +20,14 @@ export const AgentInfoView = ({
       <FormikAutoComplete
         name="province"
         optionLabel="name"
-        url="https://stage-api.sanaap.co/base/provinces_wop/"
+        url={PROVINCES_WOP}
         placeholder="استان"
       />
 
       <FormikAutoComplete
         name="city"
         optionLabel="name"
-        url={`https://stage-api.sanaap.co/base/counties_wop/?province=${values?.province?.id}`}
+        url={`${COUNTRIES_WOP}?province=${values?.province?.id}`}
         disabled={!values?.province}
         placeholder="شهر"
       />
@@ -41,10 +41,10 @@ export const AgentInfoView = ({
 
       <div className="grid grid-cols-6 gap-2 w-full">
         <div className="col-span-4">
-          <FormikTextField name="cityCode" placeholder="کد شهر" />
+          <FormikTextField name="phone" placeholder="تلفن ثابت" />
         </div>
         <div className="col-span-2">
-          <FormikTextField name="phone" placeholder="تلفن ثابت" />
+          <FormikTextField name="cityCode" placeholder="کد شهر" />
         </div>
       </div>
       <div className="w-full">

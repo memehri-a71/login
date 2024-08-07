@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
 import * as yup from "yup";
-import { axiosPost } from "../../configs/httpService/httpService";
-import { CREATE_OTP } from "../../constants/endPoints";
-import { useAuthContextValue } from "../../context/authContextValue";
+import { axiosPost } from "../../../configs/httpService/httpService";
+import { CREATE_OTP } from "../../../constants/endPoints";
+import { useAuthContextValue } from "../../../context/authContextValue";
 
 export const usePhoneVerificationViewModel = () => {
   const { curStep, setCurStep } = useAuthContextValue();

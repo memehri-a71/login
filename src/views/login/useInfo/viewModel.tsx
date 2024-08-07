@@ -1,5 +1,6 @@
-import { useAuthContextValue } from "../../context/authContextValue";
+
 import * as yup from "yup";
+import { useAuthContextValue } from "../../../context/authContextValue";
 
 export const useUserInfoViewModel = () => {
   const { setCurStep } = useAuthContextValue();

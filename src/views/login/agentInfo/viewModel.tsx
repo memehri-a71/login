@@ -1,13 +1,13 @@
-import { useAuthContextValue } from "../../context/authContextValue";
+import { useAuthContextValue } from "../../../context/authContextValue";
 import * as yup from "yup";
-import { axiosGet, axiosPost } from "../../configs/httpService/httpService";
+import { axiosGet, axiosPost } from "../../../configs/httpService/httpService";
 import {
   CHECK_AGENCY_CODE,
   INSURANCE_BRANCH,
   VALIDATE_OTP,
-} from "../../constants/endPoints";
+} from "../../../constants/endPoints";
 import { useMutation } from "@tanstack/react-query";
-import { useDebounce } from "../../hook/useDebounce";
+import { useDebounce } from "../../../hook/useDebounce";
 
 export const useAgentInfoViewModel = () => {
   const { curStep, setCurStep } = useAuthContextValue();

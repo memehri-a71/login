@@ -1,5 +1,4 @@
 import "./App.css";
-import { CustomRadio } from "./components/elements/radio/customRadio";
 import { Providers } from "./configs/providers";
 import { Login } from "./views/login";
 

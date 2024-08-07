@@ -1,6 +1,6 @@
 import { useAuthContextValue } from "../../context/authContextValue";
-import { AgentInfo } from "../agentInfo";
-import { PhoneVerification } from "../phoneVerification";
+import { AgentInfo } from "./agentInfo";
+import { PhoneVerification } from "./phoneVerification";
 import { UserInfo } from "../useInfo";
 import { useLoginVeiwModel } from "./veiwModel";
 

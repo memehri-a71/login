@@ -1,5 +1,5 @@
 import React from "react";
-import { AuthLayout } from "../../components/authLayout";
+import { AuthLayout } from "../../../components/authLayout";
 import { OtpVerificationView } from "./view";
 
 export const OtpVerification = () => {

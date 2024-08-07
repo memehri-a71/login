@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useAuthContextValue } from "../../context/authContextValue";
-import { PhoneVerification } from "../phoneVerification";
-import { UserInfo } from "../useInfo";
+import { PhoneVerification } from "./phoneVerification";
+import { UserInfo } from "./useInfo";
+
 
 export const useLoginVeiwModel = () => {
   debugger;
