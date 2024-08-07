@@ -8,7 +8,7 @@ export const AgentInfoView = ({ handleSearchAgentCode }) => {
   const { values } = useFormikContext();
 
   return (
-    <div className="flex flex-col items-center gap-6 pt-4 pb-10">
+    <div className="flex flex-col items-center gap-5 pt-4 pb-10 w-full">
       <FormikTextField
         name="agencyCode"
         placeholder="کد نمایندگی"
@@ -36,20 +36,21 @@ export const AgentInfoView = ({ handleSearchAgentCode }) => {
           <FormikTextField name="phone" placeholder="تلفن ثابت" />
         </div>
       </div>
-
-      <FormikRadio
-        name="agencyType"
-        title="نوع نمایندگی"
-        options={[
-          { value: "legal", label: "حقوقی" },
-          { value: "real", label: "حقیقی" },
-        ]}
-      />
+      <div className="w-full">
+        <FormikRadio
+          name="agencyType"
+          title="نوع نمایندگی"
+          options={[
+            { value: "real", label: "حقیقی" },
+            { value: "legal", label: "حقوقی" },
+          ]}
+        />
+      </div>
       <div
         className={`overflow-hidden transition-all duration-1000 w-full ${
           values?.agencyType == "legal"
-            ? "opacity-100 translate-y-5 h-fit"
-            : "opacity-0 h-2"
+            ? "opacity-100 translate-y-2 h-fit"
+            : "opacity-0 h-1"
         }`}
       >
         <FormikTextField name="agencyName" placeholder="نوع نمایندگی" />

@@ -19,7 +19,7 @@ export const CustomRadio = (props) => {
   return (
     <FormControl component="fieldset">
       <div className="flex items-center w-full">
-        <FormLabel component="legend">{title}</FormLabel>
+        <p>{title}:</p>
         <RadioGroup
           name={name}
           value={value}
