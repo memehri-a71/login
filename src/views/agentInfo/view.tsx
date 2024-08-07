@@ -2,6 +2,7 @@ import { useFormikContext } from "formik";
 import { FormikAutoComplete } from "../../components/elements/autoComplete/formikAutoComplete";
 import { FormikTextField } from "../../components/elements/textField/formikTextField";
 import { FormikRadio } from "../../components/elements/radio/formikRadio";
+import { CustomRadio } from "../../components/elements/radio/customRadio";
 
 export const AgentInfoView = ({ handleSearchAgentCode }) => {
   const { values } = useFormikContext();
@@ -35,7 +36,15 @@ export const AgentInfoView = ({ handleSearchAgentCode }) => {
           <FormikTextField name="phone" placeholder="تلفن ثابت" />
         </div>
       </div>
-      <FormikRadio name="agencyType" />
+
+      <FormikRadio
+        name="agencyType"
+        title="نوع نمایندگی"
+        options={[
+          { value: "legal", label: "حقوقی" },
+          { value: "real", label: "حقیقی" },
+        ]}
+      />
       <div
         className={`overflow-hidden transition-all duration-1000 w-full ${
           values?.agencyType == "legal"

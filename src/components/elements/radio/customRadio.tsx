@@ -1,14 +1,43 @@
-import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
 
 export const CustomRadio = (props) => {
-  const { onChange } = props;
+  const {
+    onChange,
+    options,
+    name,
+    value,
+    optionValue = "value",
+    optionLable = "label",
+    title,
+  } = props;
   return (
-    <RadioGroup {...props} onChange={(event) => onChange(event.target.value)}>
-      <div className="flex items-center">
-        <label>نوع نمایندگی:</label>
-        <FormControlLabel value="female" control={<Radio />} label="Female" />
-        <FormControlLabel value="male" control={<Radio />} label="Male" />
+    <FormControl component="fieldset">
+      <div className="flex items-center w-full">
+        <FormLabel component="legend">{title}</FormLabel>
+        <RadioGroup
+          name={name}
+          value={value}
+          onChange={onChange}
+          defaultValue={options[0]}
+        >
+          <div className="flex gap-2">
+            {options.map((option) => (
+              <FormControlLabel
+                key={option[optionValue]}
+                value={option[optionValue]}
+                control={<Radio />}
+                label={option[optionLable]}
+              />
+            ))}
+          </div>
+        </RadioGroup>
       </div>
-    </RadioGroup>
+    </FormControl>
   );
 };

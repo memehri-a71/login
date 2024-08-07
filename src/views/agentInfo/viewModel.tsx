@@ -15,7 +15,7 @@ export const useAgentInfoViewModel = () => {
     phone: "",
     cityCode: "",
     city: "",
-    agencyType: "legal",
+    agencyType: "",
     agencyName: "",
   };
   const validationSchema = yup.object({
@@ -28,7 +28,7 @@ export const useAgentInfoViewModel = () => {
     city: yup.string().required("این فیلد الزامی است."),
     agencyType: yup.string().required("این فیلد الزامی است."),
     agencyName: yup.string().when("agencyType", ([value]) => {
-      if (value=='legal') {
+      if (value == "legal") {
         return yup.string().required("این فیلد الزامی است.");
       }
       return yup.string();

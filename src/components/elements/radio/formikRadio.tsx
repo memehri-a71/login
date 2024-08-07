@@ -17,6 +17,7 @@ export const FormikRadio = ({ name, onChange, ...props }: any) => {
           ? Boolean(form?.errors[name])
           : false;
         const helperText = form.touched[name] ? form?.errors[name] : null;
+        console.log(form.values);
 
         return (
           <CustomRadio
