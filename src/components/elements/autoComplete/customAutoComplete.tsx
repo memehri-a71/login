@@ -1,33 +1,59 @@
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 import { axiosGet } from "../../../configs/httpService/httpService";
 import { HelperText } from "../helperText";
+import { useDebounce } from "../../../hook/useDebounce";
+import { INSURANCE_BRANCH } from "../../../constants/endPoints";
 
 export const CustomAutoComplete = (props) => {
   const {
-    onChange,
     url,
     optionLabel,
     placeholder,
     disabled,
-    name,
     error,
     helperText,
+    onChange,
   } = props;
+
   const [open, setOpen] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+  const [options, setOptions] = useState([]);
 
-  const { data: options = [], isLoading } = useQuery({
-    queryKey: [name],
-    queryFn: () => axiosGet({ url: url }),
-    enabled: open,
-    staleTime: 300000,
-  });
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const response = await axiosGet({
+        url: url,
+      });
+      console.log("c", response);
+      setOptions(response);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const inputHandler = useDebounce(async (newInputValue, provinceId = 8) => {
+    setOptions([]);
+    newInputValue != "" &&
+      (await axiosGet({
+        url: `${INSURANCE_BRANCH}?name=${newInputValue}&insurance=DEY&province=${provinceId}`,
+      }).then((res) => {
+        setOptions(res.response);
+        console.log(res.response);
+      }));
+  }, 1000);
 
-  const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const handleOpen = () => {
+    setOpen(true);
+    if (options.length === 0 && url != "") {
+      fetchData();
+    }
+  };
 
   return (
     <div className="w-full">
@@ -36,6 +62,9 @@ export const CustomAutoComplete = (props) => {
         open={open}
         onOpen={handleOpen}
         onClose={handleClose}
+        onInputChange={(_event, newInputValue) => {
+          !url && inputHandler(newInputValue);
+        }}
         options={Array.isArray(options) ? options : [options]}
         getOptionLabel={(option) =>
           option[optionLabel] ? option[optionLabel] : ""
@@ -163,6 +192,8 @@ export const CustomAutoComplete = (props) => {
 //     />
 //   );
 // };
+
+// *****************************
 
 // import React, { useState } from 'react';
 // import TextField from '@mui/material/TextField';
