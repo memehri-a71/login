@@ -1,9 +1,8 @@
-import {useState } from "react";
-
+import { useState } from "react";
 
 export const useAuthContextValue = (): any => {
-  debugger;
   const [curStep, setCurStep] = useState("phone");
+  const [phoneNumber, setPhoneNumber] = useState("09000000000");
 
-  return { curStep, setCurStep };
+  return { curStep, setCurStep, phoneNumber, setPhoneNumber };
 };

@@ -1,6 +1,14 @@
 import * as yup from "yup";
+import { useAuthContextValue } from "../../../context/authContextValue";
+import { usePhoneVerificationViewModel } from "../phoneVerification/viewModel";
+import { useMutation } from "@tanstack/react-query";
+import { VALIDATE_OTP } from "../../../constants/endPoints";
+import { axiosPost } from "../../../configs/httpService/httpService";
 
 export const useOtpVerificationViewModel = () => {
+  const { phoneNumber } = useAuthContextValue();
+  const { onSubmit } = usePhoneVerificationViewModel();
+
   const validationSchema = yup.object({
     name0: yup.number().required(),
     name1: yup.number().required(),
@@ -17,17 +25,30 @@ export const useOtpVerificationViewModel = () => {
     name4: "",
   };
 
-  const onSubmit = (values: any) => {
-    console.log(values);
+  const resendCode = () => {
+    onSubmit({ phone: phoneNumber });
   };
 
-  const resendCode = () => {
-    console.log("resendCode");
+  const handleSendOtp = async (body): Promise<void> => {
+    await axiosPost({ url: VALIDATE_OTP, body });
   };
+  const { mutateAsync, isPending } = useMutation({
+    mutationFn: (e) => handleSendOtp(e),
+  });
+
+  const onSubmithandler = async (values: any) => {
+    const otpCode = Object.values(values).join("");
+    const body = {
+      code: otpCode,
+      Phone_number: phoneNumber,
+    };
+    await mutateAsync(body as any);
+  };
+
   return {
     validationSchema,
     initialValues,
-    onSubmit,
+    onSubmit: onSubmithandler,
     resendCode,
   };
 };

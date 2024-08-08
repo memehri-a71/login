@@ -4,9 +4,8 @@ import { axiosPost } from "../../../configs/httpService/httpService";
 import { CREATE_OTP } from "../../../constants/endPoints";
 import { useAuthContextValue } from "../../../context/authContextValue";
 
-
 export const usePhoneVerificationViewModel = () => {
-  const {  setCurStep } = useAuthContextValue();
+  const { setCurStep, setPhoneNumber } = useAuthContextValue();
   const initialValues = { phone: "" };
   const validationSchema = yup.object({
     phone: yup.string().required("این فیلد الزامی است."),
@@ -21,10 +20,11 @@ export const usePhoneVerificationViewModel = () => {
 
   const onSubmit = async (values: any) => {
     console.log("values", values);
+    setPhoneNumber(values?.phone);
     const body = {
       phone_number: values?.phone,
     };
-     setCurStep("userInfo");
+    setCurStep("userInfo");
     // await mutateAsync(body as any);
   };
   return { initialValues, validationSchema, onSubmit, isPending };
