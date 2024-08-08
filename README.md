@@ -1,30 +1,50 @@
-# React + TypeScript + Vite
+# Authentication Flow Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a modern React application designed to manage user authentication. It uses TypeScript, Vite, Tailwind CSS, React Query, and Formik to offer a robust and scalable solution.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User Authentication**: Supports sign-up, login, OTP verification, and password recovery.
+- **mobile view Design**: Built with Tailwind CSS for a clean and mobile-friendly user interface.
+- **Type Safety**: Utilizes TypeScript to enhance development with static type checking.
+- **Fast Development**: Powered by Vite for quick build and development times.
+- **State Management**: Manages server data efficiently using React Query.
+- **Form Handling**: Simplifies form management and validation with Formik.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React**: Front-end library for building user interfaces.
+- **TypeScript**: Provides static typing to JavaScript.
+- **Vite**: Build tool for fast development and optimized builds.
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI design.
+- **React Query**: Data fetching and state management library for React.
+- **Formik**: Form management library to handle form state and validation.
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Setup and Installation
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Prerequisites
+
+Ensure you have the following installed:
+
+- Node.js (version 14 or later)
+- npm or yarn
+
+### Installation Steps
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone https://github.com/memehri-a71/login
+   cd your-project-name
+   npm install
+   # or
+   yarn install
+
+2. **Run the Development Server:**
+ 
+  ```bash
+   Copy code
+   npm run dev
+   # or
+   yarn dev 
