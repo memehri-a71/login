@@ -1,7 +1,7 @@
 import { useLoginVeiwModel } from "./imports";
 
 
-export const Login = (): any => {
+export const Login = () => {
   const { CurrentAuthComponent } = useLoginVeiwModel();
 
   return <CurrentAuthComponent />;
