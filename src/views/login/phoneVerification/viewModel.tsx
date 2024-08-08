@@ -25,26 +25,10 @@ export const usePhoneVerificationViewModel = () => {
     console.log("values", values);
     setPhoneNumber(values?.phone);
     const body = {
-      {phone_number: values?.phone,}
+      phone_number: values?.phone,
     };
     setCurStep("userInfo");
     await mutateAsync(body as any);
-    // fetch(
-    //   "https://stage-api.sanaap.co/api/v2/app/DEY/agent/verification/signup/create_otp/",
-    //   {
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-Type": "application/json",
-    //       "Access-Control-Allow-Origin": "*",
-    //     },
-    //     method: "POST",
-    //     body: {
-    //       phone_number: values?.phone,
-    //     },
-    //   }
-    // )
-    //   .then((res) => JSON.parse(res))
-    //   .then((res) => console.log(res));
   };
   return { initialValues, validationSchema, onSubmit, isPending };
 };

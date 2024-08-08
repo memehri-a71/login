@@ -40,9 +40,6 @@ export const axiosPost = async ({ url, body }): Promise<any> => {
   const res = await axios.post(url, body, {
     headers: {
       "Access-Control-Allow-Origin": "*",
-          'Content-Type': 'application/x-www-form-urlencoded'
-      
-      
     },
   });
   return res;
