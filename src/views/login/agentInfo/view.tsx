@@ -1,4 +1,3 @@
-import type { FormikValues } from "../imports";
 import {
   COUNTRIES_WOP,
   FormikAutoComplete,
@@ -20,7 +19,7 @@ export const AgentInfoView = ({
       <FormikTextField
         name="agencyCode"
         placeholder="کد نمایندگی"
-        onChange={(e) => handleSearchAgentCode(e.target.value,setFieldValue)}
+        onChange={(e) => handleSearchAgentCode(e.target.value, setFieldValue)}
       />
       <FormikAutoComplete
         name="province"
