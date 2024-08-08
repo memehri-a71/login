@@ -1,14 +1,15 @@
-export interface AutoCompleteProps{
+export interface AutoCompleteProps {
   error: boolean | null;
   helperText: string;
   onChange: (value: any) => void;
-  value:any
-setFieldValue:any
-onBlur:()=>void
+  value: any
+  setFieldValue: any
+  onBlur: () => void
+  querySearch?: string
 }
 
 
-export interface CustomAutoCompleteProps extends AutoCompleteProps{
+export interface CustomAutoCompleteProps extends AutoCompleteProps {
   url?: string | undefined;
   optionLabel?: string;
   placeholder?: string;
