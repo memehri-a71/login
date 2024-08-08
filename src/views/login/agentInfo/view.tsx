@@ -1,8 +1,11 @@
-import { useFormikContext } from "formik";
-import { FormikAutoComplete } from "../../../components/elements/autoComplete/formikAutoComplete";
-import { FormikTextField } from "../../../components/elements/textField/formikTextField";
-import { FormikRadio } from "../../../components/elements/radio/formikRadio";
-import { COUNTRIES_WOP, PROVINCES_WOP } from "../../../constants/endPoints";
+import {
+  COUNTRIES_WOP,
+  FormikAutoComplete,
+  FormikRadio,
+  FormikTextField,
+  PROVINCES_WOP,
+  useFormikContext,
+} from "../imports";
 
 export const AgentInfoView = ({
   handleSearchAgentCode,

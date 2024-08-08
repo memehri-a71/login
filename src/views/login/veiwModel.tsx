@@ -1,8 +1,10 @@
-import { AgentInfo } from "./agentInfo";
-import { OtpVerification } from "./otpVerification";
-import { PhoneVerification } from "./phoneVerification";
-import { UserInfo } from "./useInfo";
-import { useAuthContext } from "../../context/auth/useAuthContext";
+import {
+  AgentInfo,
+  OtpVerification,
+  PhoneVerification,
+  useAuthContext,
+  UserInfo,
+} from "./imports";
 
 export const useLoginVeiwModel = () => {
   const { curStep } = useAuthContext();

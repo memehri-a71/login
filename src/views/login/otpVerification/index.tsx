@@ -1,10 +1,11 @@
-
-import { AuthLayout } from "../../../components/layouts/authLayout";
-import { OtpVerificationView } from "./view";
-import { useOtpVerificationViewModel } from "./viewModel";
+import {
+  AuthLayout,
+  OtpVerificationView,
+  useOtpVerificationViewModel,
+} from "../imports";
 
 export const OtpVerification = () => {
-  const { validationSchema, initialValues, onSubmit, resendCode ,isPending} =
+  const { validationSchema, initialValues, onSubmit, resendCode, isPending } =
     useOtpVerificationViewModel();
 
   return (

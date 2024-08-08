@@ -1,11 +1,11 @@
-
-
-import { AuthLayout } from "../../../components/layouts/authLayout";
-import { PhoneVerificationView } from "./view";
-import { usePhoneVerificationViewModel } from "./viewModel";
+import {
+  AuthLayout,
+  PhoneVerificationView,
+  usePhoneVerificationViewModel,
+} from "../imports";
 
 export const PhoneVerification = () => {
-  const { initialValues, validationSchema, onSubmit,isPending } =
+  const { initialValues, validationSchema, onSubmit, isPending } =
     usePhoneVerificationViewModel();
   return (
     <AuthLayout
@@ -17,5 +17,4 @@ export const PhoneVerification = () => {
       <PhoneVerificationView />
     </AuthLayout>
   );
-
 };

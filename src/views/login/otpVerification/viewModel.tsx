@@ -1,11 +1,14 @@
-import * as yup from "yup";
-import { useMutation } from "@tanstack/react-query";
-import { CREATE_OTP, VALIDATE_OTP } from "../../../constants/endPoints";
-import { axiosPost } from "../../../configs/httpService/httpService";
-import { useAuthContext } from "../../../context/auth/useAuthContext";
+import {
+  axiosPost,
+  CREATE_OTP,
+  useAuthContext,
+  useMutation,
+  VALIDATE_OTP,
+  yup,
+} from "../imports";
 
 export const useOtpVerificationViewModel = () => {
-  const {setCurStep, phoneNumber } = useAuthContext();
+  const { setCurStep, phoneNumber } = useAuthContext();
 
   const validationSchema = yup.object({
     name0: yup.number().required(),
@@ -42,7 +45,7 @@ export const useOtpVerificationViewModel = () => {
   const handleSendOtp = async (body): Promise<void> => {
     await axiosPost({ url: VALIDATE_OTP, body });
   };
-  const { mutateAsync,isPending } = useMutation({
+  const { mutateAsync, isPending } = useMutation({
     mutationFn: (e) => handleSendOtp(e),
   });
   const onSubmithandler = async (values: any) => {
@@ -59,6 +62,7 @@ export const useOtpVerificationViewModel = () => {
     validationSchema,
     initialValues,
     onSubmit: onSubmithandler,
-    resendCode,isPending
+    resendCode,
+    isPending,
   };
 };

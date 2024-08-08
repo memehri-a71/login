@@ -1,8 +1,8 @@
-import { useLoginVeiwModel } from "./veiwModel";
+import { useLoginVeiwModel } from "./imports";
+
 
 export const Login = (): any => {
   const { CurrentAuthComponent } = useLoginVeiwModel();
-  console.log("name", CurrentAuthComponent.name);
 
   return <CurrentAuthComponent />;
 };

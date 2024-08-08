@@ -1,8 +1,4 @@
-
-
-import { AuthLayout } from "../../../components/layouts/authLayout";
-import { UserInfoView } from "./view";
-import { useUserInfoViewModel } from "./viewModel";
+import { AuthLayout, UserInfoView } from "../imports";
 
 export const UserInfo = () => {
   const { initialValues, validationSchema, onSubmit } = useUserInfoViewModel();

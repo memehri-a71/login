@@ -1,11 +1,13 @@
-import { useMutation } from "@tanstack/react-query";
-import * as yup from "yup";
-import { axiosPost } from "../../../configs/httpService/httpService";
-import { CREATE_OTP } from "../../../constants/endPoints";
-import { useAuthContext } from "../../../context/auth/useAuthContext";
+import {
+  axiosPost,
+  CREATE_OTP,
+  useAuthContext,
+  useMutation,
+  yup,
+} from "../imports";
 
 export const usePhoneVerificationViewModel = () => {
-  const {setCurStep, setPhoneNumber } = useAuthContext();
+  const { setCurStep, setPhoneNumber } = useAuthContext();
   const initialValues = { phone: "" };
   const validationSchema = yup.object({
     phone: yup.string().required("این فیلد الزامی است."),

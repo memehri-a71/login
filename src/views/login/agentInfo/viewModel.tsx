@@ -1,14 +1,13 @@
-import * as yup from "yup";
-import { axiosGet, axiosPost } from "../../../configs/httpService/httpService";
 import {
+  axiosGet,
+  axiosPost,
   CHECK_AGENCY_CODE,
   INSURANCE_BRANCH,
-  VALIDATE_OTP,
-} from "../../../constants/endPoints";
-import { useMutation } from "@tanstack/react-query";
-import { useDebounce } from "../../../hook/useDebounce";
-import { showError } from "../../../hook/useToust";
-import { useAuthContext } from "../../../context/auth/useAuthContext";
+  useAuthContext,
+  useDebounce,
+  useMutation,
+  yup,
+} from "../imports";
 
 export const useAgentInfoViewModel = () => {
   const { user, setCurStep } = useAuthContext();
@@ -47,28 +46,19 @@ export const useAgentInfoViewModel = () => {
     });
   }, 1000);
 
-
   const handleSearch = async (body): Promise<void> => {
     await axiosPost({ url: CHECK_AGENCY_CODE, body });
   };
-  const { mutateAsync ,isPending} = useMutation({
+  const { mutateAsync, isPending } = useMutation({
     mutationFn: (e) => handleSearch(e),
   });
 
-    //search agent code
+  //search agent code
   const handleSearchAgentCode = useDebounce((term: string | number) => {
     const body = { agent_code: term };
     mutateAsync(body as any);
   }, 1000);
 
-  //
-  // const handleAgencyForm = async (body): Promise<void> => {
-  //   await axiosPost({ url: VALIDATE_OTP, body });
-  // };
-  // const { mutateAsync, isPending } = useMutation({
-  //   mutationFn: (e) => handleAgencyForm(e),
-  // });
-  
   const onSubmit = async (values: any) => {
     console.log("values", values);
     const body = {

@@ -1,4 +1,4 @@
-import { FormikTextField } from "../../../components/elements/textField/formikTextField";
+import { FormikTextField } from "../imports";
 
 export const UserInfoView = () => {
   return (

@@ -1,5 +1,4 @@
-import * as yup from "yup";
-import { useAuthContext } from "../../../context/auth/useAuthContext";
+import { useAuthContext, yup } from "../imports";
 
 export const useUserInfoViewModel = () => {
   const { setUser, setCurStep } = useAuthContext();

@@ -1,5 +1,5 @@
+import { FormikTextField } from "../imports";
 
-import { FormikTextField } from "../../../components/elements/textField/formikTextField";
 
 export const PhoneVerificationView = () => {
   return (

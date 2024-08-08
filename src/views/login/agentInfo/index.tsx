@@ -1,7 +1,4 @@
-
-import { AuthLayout } from "../../../components/layouts/authLayout";
-import { AgentInfoView } from "./view";
-import { useAgentInfoViewModel } from "./viewModel";
+import { AgentInfoView, AuthLayout, useAgentInfoViewModel } from "../imports";
 
 export const AgentInfo = () => {
   const {

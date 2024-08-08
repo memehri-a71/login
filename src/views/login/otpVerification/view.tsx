@@ -1,6 +1,4 @@
-import { useFormikContext } from "formik";
-import { InputOtp } from "../../../components/elements/inputOtp/inputOtp";
-import { OtpCountdownTimer } from "../../../components/elements/counter/otpCountdownTimer";
+import { InputOtp, OtpCountdownTimer, useFormikContext } from "../imports";
 
 export const OtpVerificationView = ({ resendCode }) => {
   const formikProps = useFormikContext();
