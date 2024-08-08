@@ -1,14 +1,16 @@
+import type { BodyOtp, InitialValuesOtp, UseOtpVerification } from "../imports";
 import {
   axiosPost,
   CREATE_OTP,
-  showError,
   useAuthContext,
   useMutation,
   VALIDATE_OTP,
   yup,
 } from "../imports";
 
-export const useOtpVerificationViewModel = () => {
+
+
+export const useOtpVerificationViewModel = ():UseOtpVerification => {
   const { setCurStep, phoneNumber } = useAuthContext();
 
   const validationSchema = yup.object({
@@ -27,7 +29,7 @@ export const useOtpVerificationViewModel = () => {
     name4: "",
   };
 
-  const handleCreateOtp = async (body): Promise<void> => {
+  const handleCreateOtp = async (body: BodyOtp): Promise<void> => {
     await axiosPost({
       url: CREATE_OTP,
       body,
@@ -43,13 +45,16 @@ export const useOtpVerificationViewModel = () => {
     await mutateAsyncOtp(body as any);
   };
 
-  const handleSendOtp = async (body): Promise<void> => {
+  const handleSendOtp = async (body: BodyOtp): Promise<void> => {
     await axiosPost({ url: VALIDATE_OTP, body });
   };
   const { mutateAsync, isPending } = useMutation({
     mutationFn: (e) => handleSendOtp(e),
   });
-  const onSubmithandler = async (values: any, formikProps) => {
+  const onSubmithandler = async (
+    values: InitialValuesOtp,
+    formikProps: { resetForm: () => void }
+  ) => {
     const otpCode = Object.values(values).join("");
     const body = {
       code: otpCode,

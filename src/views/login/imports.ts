@@ -35,7 +35,11 @@ import { showError } from "../../hook/useToust";
 import { Dashboard } from "../dashboard";
 import { PHONE_REGEX } from "../../constants/constant";
 import type { InitialValuesType, UseUserInfoType } from "../../types/userInfo";
-
+import type {
+  BodyOtp,
+  InitialValuesOtp,
+  UseOtpVerification,
+} from "../../../types/otpVerification";
 import {
   InitialValuesPhoneVerification,
   UsePhoneVerificationType,
@@ -84,4 +88,7 @@ export type {
   UseUserInfoType,
   InitialValuesPhoneVerification,
   UsePhoneVerificationType,
+  BodyOtp,
+  InitialValuesOtp,
+  UseOtpVerification,
 };
