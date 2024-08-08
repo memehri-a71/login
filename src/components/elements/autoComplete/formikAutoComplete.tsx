@@ -1,4 +1,4 @@
-"use client";
+
 
 import type { FieldAttributes } from "formik";
 import { Field } from "formik";
@@ -22,7 +22,6 @@ export const FormikAutoComplete = (props:FormikAutoCompleteProps) => {
             }
             onChange={(value) => {
               form.setFieldValue(props.name, value);
-              // props.onChangeHandler?.(value)
             }}
             onBlur={field.onBlur}
           />

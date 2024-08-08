@@ -1,10 +1,10 @@
-export type InitialValuesOtp = Record<string, number>;
+export type InitialValuesOtp = any;
 
 export type ResendCodeType = () => void;
 
 export interface UseOtpVerification {
   validationSchema: any;
-  initialValues: Record<string, number>;
+  initialValues: InitialValuesOtp;
   onSubmit: (
     values: InitialValuesOtp,
     formikProps: { resetForm: ResendCodeType }

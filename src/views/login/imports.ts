@@ -49,6 +49,7 @@ import type {
   UseAgentInfo,
 } from "../../types/agentInfo";
 import type { FormikValues } from "formik";
+import type { AuthSteps, UseLoginProps } from "../../types/login";
 
 export {
   yup,
@@ -97,5 +98,5 @@ export type {
   InitialValuesOtp,
   UseOtpVerification,
   InitialValuesAgentInfo,
-  UseAgentInfo,FormikValues
+  UseAgentInfo,FormikValues,AuthSteps, UseLoginProps 
 };

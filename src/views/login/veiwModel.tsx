@@ -1,3 +1,4 @@
+import type { AuthSteps } from "./imports";
 import {
   AgentInfo,
   OtpVerification,
@@ -7,8 +8,10 @@ import {
   Dashboard,
 } from "./imports";
 
+
+
 export const useLoginVeiwModel = () => {
-  const { curStep }: {curStep:string}= useAuthContext();
+  const { curStep }= useAuthContext();
 
   const routeStepMapping = {
     phone: PhoneVerification,
@@ -18,7 +21,7 @@ export const useLoginVeiwModel = () => {
     dashboard: Dashboard,
   };
 
-  const CurrentAuthComponent = routeStepMapping[curStep] ;
+  const CurrentAuthComponent = routeStepMapping[curStep as AuthSteps] ||  null;
 
   return { CurrentAuthComponent };
 };

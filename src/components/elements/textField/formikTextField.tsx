@@ -19,7 +19,7 @@ export const FormikTextField = (props: FormikTextFieldType) => {
         <CustomTextField
           {...props}
           value={props?.value || field.value}
-          error={meta.touched ? Boolean(meta.error) : null}
+          error={meta.touched && Boolean(meta.error) }
           helperText={showErrorText && meta && meta.touched ? meta.error : ""}
           onChange={handleChange}
           onBlur={field.onBlur}

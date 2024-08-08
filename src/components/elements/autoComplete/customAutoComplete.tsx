@@ -10,8 +10,8 @@ import { CustomAutoCompleteProps } from "../../../types/autoComplete";
 
 export const CustomAutoComplete = (props: CustomAutoCompleteProps) => {
   const {
-    url,
-    optionLabel,
+    url='',
+    optionLabel='label',
     placeholder,
     disabled,
     error,
@@ -21,13 +21,13 @@ export const CustomAutoComplete = (props: CustomAutoCompleteProps) => {
 
   const [open, setOpen] = useState(false);
   const [isLoading, setLoading] = useState(false);
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState<any[]>([]);
 
   const fetchData = async () => {
     setLoading(true);
     try {
       const response = await axiosGet({
-        url: url,
+        url,
       });
       setOptions(response);
     } catch (error) {

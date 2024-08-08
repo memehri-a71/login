@@ -1,6 +1,7 @@
+import { ResendCodeType } from "../../../types/otpVerification";
 import { InputOtp, OtpCountdownTimer, useFormikContext } from "../imports";
 
-export const OtpVerificationView = ({ resendCode }) => {
+export const OtpVerificationView = ({ resendCode }:{resendCode:ResendCodeType}) => {
   const formikProps = useFormikContext();
 
   return (
