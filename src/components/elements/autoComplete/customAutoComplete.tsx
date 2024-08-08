@@ -28,7 +28,6 @@ export const CustomAutoComplete = (props) => {
       const response = await axiosGet({
         url: url,
       });
-      console.log("c", response);
       setOptions(response);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -43,7 +42,6 @@ export const CustomAutoComplete = (props) => {
         url: `${INSURANCE_BRANCH}?name=${newInputValue}&insurance=DEY&province=${provinceId}`,
       }).then((res) => {
         setOptions(res.response);
-        console.log(res.response);
       }));
   }, 1000);
 

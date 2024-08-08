@@ -1,4 +1,3 @@
-import { useAuthContextValue } from "../../../context/authContext/authContextValue";
 import * as yup from "yup";
 import { axiosGet, axiosPost } from "../../../configs/httpService/httpService";
 import {
@@ -8,6 +7,8 @@ import {
 } from "../../../constants/endPoints";
 import { useMutation } from "@tanstack/react-query";
 import { useDebounce } from "../../../hook/useDebounce";
+import { useAuthContextValue } from "../../../context/authContextValue";
+import { showError } from "../../../hook/useToust";
 
 export const useAgentInfoViewModel = () => {
   const { curStep, setCurStep } = useAuthContextValue();
@@ -40,7 +41,9 @@ export const useAgentInfoViewModel = () => {
   });
 
   const handleSearch = async (body): Promise<void> => {
-    await axiosPost({ url: CHECK_AGENCY_CODE, body });
+    await axiosPost({ url: CHECK_AGENCY_CODE, body }).catch((error) =>
+      showError(error)
+    );
   };
   const handleSearchAgentCode = useDebounce((term: string | number) => {
     const body = { agent_code: term };

@@ -1,4 +1,4 @@
-export const CREATE_OTP = "https://stage-api.sanaap.co/api/v2/app/DEY/agent/verification/signup/create_otp";
+export const CREATE_OTP = "/api/v2/app/DEY/agent/verification/signup/create_otp/";
 export const VALIDATE_OTP = "/api/v2/app/DEY/agent/verification/signup/validate_otp";
 export const PROVINCES_WOP = "https://stage-api.sanaap.co/base/provinces_wop/";
 export const COUNTRIES_WOP = "https://stage-api.sanaap.co/base/counties_wop/";

@@ -1,8 +1,7 @@
-import { useAuthContextValue } from "../../context/authContextValue";
+import { AgentInfo } from "./agentInfo";
 import { OtpVerification } from "./otpVerification";
 import { PhoneVerification } from "./phoneVerification";
 import { UserInfo } from "./useInfo";
-import { useState } from "react";
 
 export const useLoginVeiwModel = () => {
   // const [curStep, setCurStep] = useState("phone");
@@ -13,9 +12,10 @@ export const useLoginVeiwModel = () => {
     phone: PhoneVerification,
     userInfo: UserInfo,
     otp: OtpVerification,
+    agentInfo: AgentInfo,
   };
 
-  const CurrentAuthComponent = routeStepMapping["otp"];
+  const CurrentAuthComponent = routeStepMapping["phone"];
 
   return { CurrentAuthComponent };
 };
