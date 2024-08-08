@@ -1,6 +1,7 @@
 import {
   axiosPost,
   CREATE_OTP,
+  showError,
   useAuthContext,
   useMutation,
   VALIDATE_OTP,
@@ -48,14 +49,18 @@ export const useOtpVerificationViewModel = () => {
   const { mutateAsync, isPending } = useMutation({
     mutationFn: (e) => handleSendOtp(e),
   });
-  const onSubmithandler = async (values: any) => {
+  const onSubmithandler = async (values: any, formikProps) => {
     const otpCode = Object.values(values).join("");
     const body = {
       code: otpCode,
       phone_number: phoneNumber,
     };
 
-    await mutateAsync(body as any).then(() => setCurStep("userInfo"));
+    await mutateAsync(body as any)
+      .then(() => setCurStep("userInfo"))
+      .catch(() => {
+        formikProps.resetForm();
+      });
   };
 
   return {

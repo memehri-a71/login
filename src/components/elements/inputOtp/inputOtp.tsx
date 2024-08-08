@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { FormikTextField } from "../textField/formikTextField";
 import { useFormikContext } from "formik";
+import { NUMBER_REGEX } from "../../../constants/constant";
 
 export const InputOtp = ({ length = 5, disabled = false }) => {
   const inputRefs = useRef<HTMLInputElement[]>([]);
@@ -8,14 +9,13 @@ export const InputOtp = ({ length = 5, disabled = false }) => {
   const otp = new Array(length).fill("");
 
   const handleChange = (index: any, e: any) => {
-    const numberRegex = /^[0-9]$/;
     const value = e.target.value;
-    if (!numberRegex.test(value)) {
+    if (!NUMBER_REGEX.test(value)) {
       formikProps.setFieldValue(`name${index}`, "");
     }
     if (
       value &&
-      numberRegex.test(value) &&
+      NUMBER_REGEX.test(value) &&
       index < length - 1 &&
       inputRefs.current[index + 1]
     ) {
@@ -36,7 +36,7 @@ export const InputOtp = ({ length = 5, disabled = false }) => {
 
   return (
     <div
-      className="flex justify-center items-center gap-x-2 text-red-600 pb-10"
+      className="flex !justify-center !items-center gap-x-2 text-red-600 pb-10"
       style={{ direction: "ltr" }}
     >
       {otp.map((_value, index) => {

@@ -9,7 +9,13 @@ interface FormikTextFieldType {
   helperText?: string;
 }
 export const CustomTextField = (props: FormikTextFieldType) => {
-  const { placeholder, size = "small", multiline = false, rows } = props;
+  const {
+    placeholder,
+    size = "small",
+    multiline = false,
+    rows,
+    maxLength = null,
+  } = props;
   return (
     <TextField
       {...props}
@@ -20,6 +26,7 @@ export const CustomTextField = (props: FormikTextFieldType) => {
       size={size}
       multiline={multiline}
       rows={rows}
+      inputProps={{ maxLength: maxLength }}
     />
   );
 };

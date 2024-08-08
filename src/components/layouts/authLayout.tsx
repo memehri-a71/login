@@ -1,6 +1,6 @@
 import { CustomButton } from "../elements/button/customButton";
 import { FormikWrapper } from "../form/formikWrapper";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/images/logo.png";
 
 export const AuthLayout = (props: any) => {
   const { initialValues, validationSchema, onSubmit, children, isLoading } =

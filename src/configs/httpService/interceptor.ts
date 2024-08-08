@@ -20,7 +20,7 @@ export const axiosInstance = axios.create({
     (response) => response,
     async (error: any) => {
       console.log(error);
-      showError(error);
+      showError(error.message);
       error.config.headers.Accept = "application/json";
   
       return Promise.reject(error);

@@ -1,6 +1,8 @@
+
 import {
   axiosPost,
   CREATE_OTP,
+  PHONE_REGEX,
   useAuthContext,
   useMutation,
   yup,
@@ -10,7 +12,10 @@ export const usePhoneVerificationViewModel = () => {
   const { setCurStep, setPhoneNumber } = useAuthContext();
   const initialValues = { phone: "" };
   const validationSchema = yup.object({
-    phone: yup.string().required("این فیلد الزامی است."),
+    phone: yup
+      .string()
+      .matches(PHONE_REGEX, 'شماره موبایل صحیح نمی باشد.')
+      .required("این فیلد الزامی است."),
   });
 
   const handleCreateOtp = async (body): Promise<void> => {

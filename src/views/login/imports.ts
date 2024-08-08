@@ -33,6 +33,8 @@ import { FormikRadio } from "../../components/elements/radio/formikRadio";
 import { useDebounce } from "../../hook/useDebounce";
 import { showError } from "../../hook/useToust";
 import { Dashboard } from "../dashboard";
+import { PHONE_REGEX } from "../../constants/constant";
+
 export {
   yup,
   useMutation,
@@ -66,6 +68,7 @@ export {
   VALIDATE_OTP,
   CHECK_AGENCY_CODE,
   INSURANCE_BRANCH,
+  PHONE_REGEX,
   useDebounce,
   showError,
 };
