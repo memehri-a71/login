@@ -79,7 +79,7 @@ export const useAgentInfoViewModel = () => {
       delete body.agency_name;
     }
 
-    await mutateAsync(body as any);
+    await mutateAsync(body as any).then(() => setCurStep("dashboard"));
   };
 
   return {

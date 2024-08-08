@@ -32,7 +32,7 @@ import { FormikAutoComplete } from "../../components/elements/autoComplete/formi
 import { FormikRadio } from "../../components/elements/radio/formikRadio";
 import { useDebounce } from "../../hook/useDebounce";
 import { showError } from "../../hook/useToust";
-
+import { Dashboard } from "../dashboard";
 export {
   yup,
   useMutation,
@@ -59,6 +59,7 @@ export {
   FormikTextField,
   FormikAutoComplete,
   FormikRadio,
+  Dashboard,
   COUNTRIES_WOP,
   PROVINCES_WOP,
   CREATE_OTP,

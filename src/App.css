@@ -1,3 +1,34 @@
+html,
+body {
+  font-family: 'iranSans';
+}
+
+
+@font-face {
+  font-family: 'iranSans';
+  src: url('../public/fonts/FaNum/IRANSansXFaNum-Regular.woff');
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'iranSansBold';
+  src: url('../public/fonts/FaNum/IRANSansXFaNum-Bold.ttf');
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'iranSansEnB';
+  src: url('../public/fonts/IRANSansX-Bold.ttf');
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'iranSansEn';
+  src: url('../public/fonts/IRANSansX-Regular.ttf');
+  font-display: block;
+}
+
+
 /* #root {
   max-width: 1280px;
   margin: 0 auto;

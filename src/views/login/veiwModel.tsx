@@ -4,6 +4,7 @@ import {
   PhoneVerification,
   useAuthContext,
   UserInfo,
+  Dashboard,
 } from "./imports";
 
 export const useLoginVeiwModel = () => {
@@ -14,6 +15,7 @@ export const useLoginVeiwModel = () => {
     otp: OtpVerification,
     userInfo: UserInfo,
     agentInfo: AgentInfo,
+    dashboard: Dashboard,
   };
 
   const CurrentAuthComponent = routeStepMapping[curStep];
