@@ -8,7 +8,6 @@ export const OtpVerificationView = ({ resendCode }) => {
       <InputOtp />
       <div className="flex justify-center gap-3 items-center pb-5">
         <OtpCountdownTimer
-          // isLoadingResend={isLoadingResend}
           handleResendOtp={() => {
             formikProps.resetForm();
             resendCode();

@@ -1,24 +1,27 @@
+import type { FormikValues } from "../imports";
 import {
   COUNTRIES_WOP,
   FormikAutoComplete,
   FormikRadio,
   FormikTextField,
   PROVINCES_WOP,
+  UseAgentInfo,
   useFormikContext,
 } from "../imports";
 
 export const AgentInfoView = ({
   handleSearchAgentCode,
-  handleSearchInsuranceBranch,
-}) => {
-  const { values } = useFormikContext();
+}: Pick<UseAgentInfo, "handleSearchAgentCode">) => {
+  const { values }: { values: FormikValues } = useFormikContext();
 
   return (
     <div className="flex flex-col items-center gap-5 pt-4 pb-10 w-full">
       <FormikTextField
         name="agencyCode"
         placeholder="کد نمایندگی"
-        onChange={(e) => handleSearchAgentCode(e.target.value)}
+        onChange={(e) =>
+          handleSearchAgentCode(e.target.value)
+        }
       />
       <FormikAutoComplete
         name="province"

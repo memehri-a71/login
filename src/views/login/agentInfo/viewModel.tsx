@@ -1,26 +1,26 @@
 import type { InitialValuesAgentInfo, UseAgentInfo } from "../imports";
 import {
-  axiosGet,
+  // axiosGet,
   axiosPost,
   CHECK_AGENCY_CODE,
-  INSURANCE_BRANCH,
+  // CHECK_AGENCY_CODE,
+  // INSURANCE_BRANCH,
   useAuthContext,
   useDebounce,
   useMutation,
   yup,
 } from "../imports";
 
-
 export const useAgentInfoViewModel = (): UseAgentInfo => {
   const { user, setCurStep } = useAuthContext();
   const initialValues = {
     address: "",
-    province: "",
+    province: {},
     agencyCode: "",
-    insuranceBranch: "",
+    insuranceBranch: {},
     phone: "",
     cityCode: "",
-    city: "",
+    city: {},
     agencyType: "",
     agencyName: "",
   };
@@ -42,13 +42,16 @@ export const useAgentInfoViewModel = (): UseAgentInfo => {
   });
 
   //search insurance branch
-  const handleSearchInsuranceBranch = useDebounce(({ term, provinceId }) => {
-    axiosGet({
-      url: `${INSURANCE_BRANCH}?name=${term}&insurance=DEY&province=${provinceId}`,
-    });
-  }, 1000);
+  // const handleSearchInsuranceBranch = useDebounce(
+  //   ({ term, provinceId }: { term: string; provinceId: number }) => {
+  //     axiosGet({
+  //       url: `${INSURANCE_BRANCH}?name=${term}&insurance=DEY&province=${provinceId}`,
+  //     });
+  //   },
+  //   1000
+  // );
 
-  const handleSearch = async (body): Promise<void> => {
+  const handleSearch = async (body: any): Promise<void> => {
     await axiosPost({ url: CHECK_AGENCY_CODE, body });
   };
   const { mutateAsync, isPending } = useMutation({
@@ -77,7 +80,7 @@ export const useAgentInfoViewModel = (): UseAgentInfo => {
       agency_name: values?.agencyName,
     };
     if (values?.agencyType == "real") {
-      delete body?.agency_name;
+      delete (body as Partial<any>)?.agency_name;
     }
 
     await mutateAsync(body as any).then(() => setCurStep("dashboard"));
@@ -89,6 +92,6 @@ export const useAgentInfoViewModel = (): UseAgentInfo => {
     onSubmit,
     isPending,
     handleSearchAgentCode,
-    handleSearchInsuranceBranch,
+    // handleSearchInsuranceBranch,
   };
 };

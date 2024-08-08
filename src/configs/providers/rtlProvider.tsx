@@ -15,3 +15,4 @@ export default function RtlProvider({
 
   return <CacheProvider value={cacheRtl}>{children}</CacheProvider>
 }
+

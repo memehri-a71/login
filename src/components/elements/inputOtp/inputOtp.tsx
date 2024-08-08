@@ -60,7 +60,7 @@ export const InputOtp = ({ length = 5, disabled = false }) => {
             }}
             name={`name${index}`}
             onChange={(e) => handleChange(index, e)}
-            onKeyDown={(e) => {
+            onKeyDown={(e: any) => {
               handleKeyDown(e, index);
             }}
           />

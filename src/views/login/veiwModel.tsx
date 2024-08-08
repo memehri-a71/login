@@ -8,7 +8,7 @@ import {
 } from "./imports";
 
 export const useLoginVeiwModel = () => {
-  const { curStep } = useAuthContext();
+  const { curStep }: {curStep:string}= useAuthContext();
 
   const routeStepMapping = {
     phone: PhoneVerification,
@@ -18,7 +18,7 @@ export const useLoginVeiwModel = () => {
     dashboard: Dashboard,
   };
 
-  const CurrentAuthComponent = routeStepMapping[curStep];
+  const CurrentAuthComponent = routeStepMapping[curStep] ;
 
   return { CurrentAuthComponent };
 };

@@ -1,8 +1,9 @@
 
 import { useEffect, useState } from "react";
 import { CustomButton, logo } from "../imports";
+import { UseDashboard } from "../../../types/dashboard";
 
-export const DashboardView = ({handleRedirect}) => {
+export const DashboardView = ({handleRedirect}:UseDashboard) => {
   const [load, setLoad] = useState(false);
   useEffect(() => {
     setLoad(true);

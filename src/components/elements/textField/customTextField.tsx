@@ -1,14 +1,8 @@
 import { TextField } from "@mui/material";
+import { CustomTextFieldType } from "../../../types/textField";
 
-interface FormikTextFieldType {
-  name: string;
-  placeholder?: string;
-  size?: "small" | "medium";
-  multiline?: boolean;
-  rows?: number;
-  helperText?: string;
-}
-export const CustomTextField = (props: FormikTextFieldType) => {
+
+export const CustomTextField = (props: CustomTextFieldType) => {
   const {
     placeholder,
     size = "small",

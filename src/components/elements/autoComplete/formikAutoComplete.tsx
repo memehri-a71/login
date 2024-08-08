@@ -3,15 +3,16 @@
 import type { FieldAttributes } from "formik";
 import { Field } from "formik";
 import { CustomAutoComplete } from "./customAutoComplete";
+import { FormikAutoCompleteProps } from "../../../types/autoComplete";
 
-export const FormikAutoComplete = (props) => {
+export const FormikAutoComplete = (props:FormikAutoCompleteProps) => {
   return (
     <Field name={props.name}>
       {({ field, form }: FieldAttributes<any>) => {
         return (
           <CustomAutoComplete
             {...props}
-            value={field.value}
+            value={field?.value}
             setFieldValue={form.setFieldValue}
             error={
               form.touched[field.name] ? Boolean(form.errors[field.name]) : null

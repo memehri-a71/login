@@ -6,8 +6,9 @@ import { axiosGet } from "../../../configs/httpService/httpService";
 import { HelperText } from "../helperText";
 import { useDebounce } from "../../../hook/useDebounce";
 import { INSURANCE_BRANCH } from "../../../constants/endPoints";
+import { CustomAutoCompleteProps } from "../../../types/autoComplete";
 
-export const CustomAutoComplete = (props) => {
+export const CustomAutoComplete = (props: CustomAutoCompleteProps) => {
   const {
     url,
     optionLabel,
@@ -35,7 +36,7 @@ export const CustomAutoComplete = (props) => {
       setLoading(false);
     }
   };
-  const inputHandler = useDebounce(async (newInputValue, provinceId = 8) => {
+  const inputHandler = useDebounce(async (newInputValue: string, provinceId = 8) => {
     setOptions([]);
     newInputValue != "" &&
       (await axiosGet({
@@ -64,7 +65,7 @@ export const CustomAutoComplete = (props) => {
           !url && inputHandler(newInputValue);
         }}
         options={Array.isArray(options) ? options : [options]}
-        getOptionLabel={(option) =>
+        getOptionLabel={(option: Record<string, any>) =>
           option[optionLabel] ? option[optionLabel] : ""
         }
         fullWidth

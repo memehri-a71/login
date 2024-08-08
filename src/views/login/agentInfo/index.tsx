@@ -6,7 +6,7 @@ export const AgentInfo = () => {
     validationSchema,
     onSubmit,
     handleSearchAgentCode,
-    handleSearchInsuranceBranch,
+    // handleSearchInsuranceBranch,
   } = useAgentInfoViewModel();
   return (
     <AuthLayout
@@ -16,7 +16,7 @@ export const AgentInfo = () => {
     >
       <AgentInfoView
         handleSearchAgentCode={handleSearchAgentCode}
-        handleSearchInsuranceBranch={handleSearchInsuranceBranch}
+        // handleSearchInsuranceBranch={handleSearchInsuranceBranch}
       />
     </AuthLayout>
   );

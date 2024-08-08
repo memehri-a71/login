@@ -36,7 +36,7 @@ export const useOtpVerificationViewModel = ():UseOtpVerification => {
     });
   };
   const { mutateAsync: mutateAsyncOtp } = useMutation({
-    mutationFn: (e) => handleCreateOtp(e),
+    mutationFn: (e:any) => handleCreateOtp(e),
   });
   const resendCode = async () => {
     const body = {
@@ -49,7 +49,7 @@ export const useOtpVerificationViewModel = ():UseOtpVerification => {
     await axiosPost({ url: VALIDATE_OTP, body });
   };
   const { mutateAsync, isPending } = useMutation({
-    mutationFn: (e) => handleSendOtp(e),
+    mutationFn: (e:any) => handleSendOtp(e),
   });
   const onSubmithandler = async (
     values: InitialValuesOtp,

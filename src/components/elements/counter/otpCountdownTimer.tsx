@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CustomButton } from "../button/customButton";
 import CountDownTimer from "./countDownTimer";
+import { OtpCountdownTimerType } from "../../../types/counter";
 
 
-export const OtpCountdownTimer = ({
-  handleResendOtp,
-  isLoadingResend,
-  defaultTimer,
-}) => {
+export const OtpCountdownTimer = (props: OtpCountdownTimerType) => {
+  const { handleResendOtp, isLoadingResend, defaultTimer } = props;
+
   const OTP_EXPIRE_TIME = 5;
   const [timer, setTimer] = useState(defaultTimer || OTP_EXPIRE_TIME);
 
@@ -36,5 +35,3 @@ export const OtpCountdownTimer = ({
     </div>
   );
 };
-
-

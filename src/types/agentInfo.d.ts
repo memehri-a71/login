@@ -14,6 +14,6 @@ export interface UseAgentInfo {
   validationSchema: any;
   onSubmit: (values: InitialValuesAgentInfo) => void;
   isPending: boolean;
-  handleSearchAgentCode: () => void;
-  handleSearchInsuranceBranch: () => void;
+  handleSearchAgentCode: (value: any) => void;
+  handleSearchInsuranceBranch?: () => void;
 }

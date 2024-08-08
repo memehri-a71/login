@@ -48,6 +48,7 @@ import type {
   InitialValuesAgentInfo,
   UseAgentInfo,
 } from "../../types/agentInfo";
+import type { FormikValues } from "formik";
 
 export {
   yup,
@@ -96,5 +97,5 @@ export type {
   InitialValuesOtp,
   UseOtpVerification,
   InitialValuesAgentInfo,
-  UseAgentInfo,
+  UseAgentInfo,FormikValues
 };

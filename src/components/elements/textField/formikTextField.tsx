@@ -1,7 +1,8 @@
 import { Field, useField } from "formik";
 import { CustomTextField } from "./customTextField";
+import { FormikTextFieldType } from "../../../types/textField";
 
-export const FormikTextField = (props) => {
+export const FormikTextField = (props: FormikTextFieldType) => {
   const { name, showErrorText = true } = props;
 
   const [field, meta, helpers] = useField(name);

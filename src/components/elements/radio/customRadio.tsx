@@ -1,12 +1,12 @@
 import {
   FormControl,
   FormControlLabel,
-  FormLabel,
   Radio,
   RadioGroup,
 } from "@mui/material";
+import { CustomRadioProps } from "../../../types/radio";
 
-export const CustomRadio = (props) => {
+export const CustomRadio = (props: CustomRadioProps) => {
   const {
     onChange,
     options,
@@ -16,6 +16,7 @@ export const CustomRadio = (props) => {
     optionLable = "label",
     title,
   } = props;
+
   return (
     <FormControl component="fieldset">
       <div className="flex items-center w-full">
@@ -27,7 +28,7 @@ export const CustomRadio = (props) => {
           defaultValue={options[0]}
         >
           <div className="flex gap-2">
-            {options.map((option) => (
+            {options.map((option: Record<string, any>) => (
               <FormControlLabel
                 key={option[optionValue]}
                 value={option[optionValue]}

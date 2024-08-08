@@ -4,7 +4,7 @@ export type ResendCodeType = () => void;
 
 export interface UseOtpVerification {
   validationSchema: any;
-  initialValues: InitialValuesOtp;
+  initialValues: Record<string, number>;
   onSubmit: (
     values: InitialValuesOtp,
     formikProps: { resetForm: ResendCodeType }

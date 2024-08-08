@@ -30,7 +30,7 @@ export const usePhoneVerificationViewModel = (): UsePhoneVerificationType => {
     });
   };
   const { mutateAsync, isPending } = useMutation({
-    mutationFn: (e) => handleCreateOtp(e),
+    mutationFn: (e: any) => handleCreateOtp(e),
   });
 
   const onSubmit = async (values: InitialValuesPhoneVerification) => {
