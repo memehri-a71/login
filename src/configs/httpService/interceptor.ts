@@ -17,7 +17,10 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
   (response) => response,
   async (error: any) => {
-    showError(error.message);
+    if (error?.response?.status == 400) {
+      showError(error?.response?.data?.error_details?.fa_details)
+    }
+    else { showError(error.message); }
     error.config.headers.Accept = "application/json";
     return Promise.reject(error);
   }
