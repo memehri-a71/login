@@ -39,11 +39,15 @@ import type {
   BodyOtp,
   InitialValuesOtp,
   UseOtpVerification,
-} from "../../../types/otpVerification";
+} from "../../types/otpVerification";
 import {
   InitialValuesPhoneVerification,
   UsePhoneVerificationType,
 } from "../../types/phoneVerification";
+import type {
+  InitialValuesAgentInfo,
+  UseAgentInfo,
+} from "../../types/agentInfo";
 
 export {
   yup,
@@ -91,4 +95,6 @@ export type {
   BodyOtp,
   InitialValuesOtp,
   UseOtpVerification,
+  InitialValuesAgentInfo,
+  UseAgentInfo,
 };

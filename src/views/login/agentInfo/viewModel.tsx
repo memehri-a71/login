@@ -1,3 +1,4 @@
+import type { InitialValuesAgentInfo, UseAgentInfo } from "../imports";
 import {
   axiosGet,
   axiosPost,
@@ -9,7 +10,8 @@ import {
   yup,
 } from "../imports";
 
-export const useAgentInfoViewModel = () => {
+
+export const useAgentInfoViewModel = (): UseAgentInfo => {
   const { user, setCurStep } = useAuthContext();
   const initialValues = {
     address: "",
@@ -59,8 +61,7 @@ export const useAgentInfoViewModel = () => {
     mutateAsync(body as any);
   }, 1000);
 
-  const onSubmit = async (values: any) => {
-    console.log("values", values);
+  const onSubmit = async (values: InitialValuesAgentInfo) => {
     const body = {
       address: values?.address,
       agency_type: values?.agencyType,
@@ -76,7 +77,7 @@ export const useAgentInfoViewModel = () => {
       agency_name: values?.agencyName,
     };
     if (values?.agencyType == "real") {
-      delete body.agency_name;
+      delete body?.agency_name;
     }
 
     await mutateAsync(body as any).then(() => setCurStep("dashboard"));
