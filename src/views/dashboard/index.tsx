@@ -1,7 +1,8 @@
-import { DashboardView } from "./imports";
-import { useDashboardViewModel } from "./dashboard/viewModel";
+import { DashboardView, useDashboardViewModel } from "./imports";
+
 
 export const Dashboard = () => {
   const { handleRedirect } = useDashboardViewModel();
+
   return <DashboardView handleRedirect={handleRedirect} />;
 };

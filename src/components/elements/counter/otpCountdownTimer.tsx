@@ -7,7 +7,7 @@ import { OtpCountdownTimerType } from "../../../types/counter";
 export const OtpCountdownTimer = (props: OtpCountdownTimerType) => {
   const { handleResendOtp, isLoadingResend, defaultTimer } = props;
 
-  const OTP_EXPIRE_TIME = 5;
+  const OTP_EXPIRE_TIME =3*60;
   const [timer, setTimer] = useState(defaultTimer || OTP_EXPIRE_TIME);
 
   useEffect(() => {
@@ -27,7 +27,6 @@ export const OtpCountdownTimer = (props: OtpCountdownTimerType) => {
           }}
         >
           <p>ارسال مجدد کد</p>
-          {/* {isLoadingResend ? <Spinner /> : null} */}
         </CustomButton>
       ) : (
         <CountDownTimer timer={timer} setTimer={setTimer} />

@@ -4,6 +4,7 @@ import {
   FormikAutoComplete,
   FormikRadio,
   FormikTextField,
+  INSURANCE_BRANCH,
   PROVINCES_WOP,
   UseAgentInfo,
   useFormikContext,
@@ -12,14 +13,14 @@ import {
 export const AgentInfoView = ({
   handleSearchAgentCode,
 }: Pick<UseAgentInfo, "handleSearchAgentCode">) => {
-  const { values }: { values: FormikValues } = useFormikContext();
+  const { values, setFieldValue }: any = useFormikContext();
 
   return (
     <div className="flex flex-col items-center gap-5 pt-4 pb-10 w-full">
       <FormikTextField
         name="agencyCode"
         placeholder="کد نمایندگی"
-        onChange={(e) => handleSearchAgentCode(e.target.value)}
+        onChange={(e) => handleSearchAgentCode(e.target.value,setFieldValue)}
       />
       <FormikAutoComplete
         name="province"
@@ -27,7 +28,6 @@ export const AgentInfoView = ({
         url={PROVINCES_WOP}
         placeholder="استان"
       />
-
       <FormikAutoComplete
         name="city"
         optionLabel="name"
@@ -36,13 +36,13 @@ export const AgentInfoView = ({
         placeholder="شهر"
       />
       <FormikTextField name="address" placeholder="آدرس" multiline rows={4} />
-
       <FormikAutoComplete
         name="insuranceBranch"
         optionLabel="name"
         placeholder="شعبه بیمه"
+        url={`${INSURANCE_BRANCH}?insurance=DEY&province=${values?.province?.id}`}
+        querySearch='name'
       />
-
       <div className="grid grid-cols-6 gap-2 w-full">
         <div className="col-span-4">
           <FormikTextField name="phone" placeholder="تلفن ثابت" />
@@ -62,11 +62,10 @@ export const AgentInfoView = ({
         />
       </div>
       <div
-        className={`overflow-hidden transition-all duration-1000 w-full ${
-          values?.agencyType == "legal"
-            ? "opacity-100 translate-y-2 h-fit"
-            : "opacity-0 h-1"
-        }`}
+        className={`overflow-hidden transition-all duration-1000 w-full ${values?.agencyType == "legal"
+          ? "opacity-100 translate-y-2 h-fit"
+          : "opacity-0 h-1"
+          }`}
       >
         <FormikTextField name="agencyName" placeholder="نوع نمایندگی" />
       </div>

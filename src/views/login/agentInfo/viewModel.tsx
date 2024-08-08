@@ -41,15 +41,6 @@ export const useAgentInfoViewModel = (): UseAgentInfo => {
     }),
   });
 
-  //search insurance branch
-  // const handleSearchInsuranceBranch = useDebounce(
-  //   ({ term, provinceId }: { term: string; provinceId: number }) => {
-  //     axiosGet({
-  //       url: `${INSURANCE_BRANCH}?name=${term}&insurance=DEY&province=${provinceId}`,
-  //     });
-  //   },
-  //   1000
-  // );
 
   const handleSearch = async (body: any): Promise<void> => {
     await axiosPost({ url: CHECK_AGENCY_CODE, body });
@@ -58,11 +49,10 @@ export const useAgentInfoViewModel = (): UseAgentInfo => {
     mutationFn: (e) => handleSearch(e),
   });
 
-  //search agent code
-  const handleSearchAgentCode = useDebounce((term: string | number) => {
+  const handleSearchAgentCode = useDebounce((term: string | number, setFieldValue) => {
     const body = { agent_code: term };
-    mutateAsync(body as any);
-  }, 1000);
+    mutateAsync(body as any).catch(() => setFieldValue('agencyCode', ''))
+  }, 800);
 
   const onSubmit = async (values: InitialValuesAgentInfo) => {
     const body = {
@@ -92,6 +82,5 @@ export const useAgentInfoViewModel = (): UseAgentInfo => {
     onSubmit,
     isPending,
     handleSearchAgentCode,
-    // handleSearchInsuranceBranch,
   };
 };
