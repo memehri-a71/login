@@ -4,7 +4,7 @@ This project is a modern React application designed to manage user authenticatio
 
 ## Features
 
-- **User Authentication**: Supports sign-up, login, OTP verification, and password recovery.
+- **User Authentication**: Supports login, OTP verification  and user information.
 - **mobile view Design**: Built with Tailwind CSS for a clean and mobile-friendly user interface.
 - **Type Safety**: Utilizes TypeScript to enhance development with static type checking.
 - **Fast Development**: Powered by Vite for quick build and development times.
@@ -43,7 +43,7 @@ Ensure you have the following installed:
 
 2. **Run the Development Server:**
  
-  ```bash
+   ```bash
    Copy code
    npm run dev
    # or
