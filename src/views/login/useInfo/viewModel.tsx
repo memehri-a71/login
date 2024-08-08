@@ -1,9 +1,8 @@
-
 import * as yup from "yup";
-import { useAuthContextValue } from "../../../context/auth/authContextValue";
+import { useAuthContext } from "../../../context/auth/useAuthContext";
 
 export const useUserInfoViewModel = () => {
-  const { setCurStep } = useAuthContextValue();
+  const { setUser, setCurStep } = useAuthContext();
 
   const initialValues = { firstName: "", lastName: "" };
 
@@ -13,7 +12,11 @@ export const useUserInfoViewModel = () => {
   });
 
   const onSubmit = async (values: any) => {
-    setCurStep('agentInfo');
+    setCurStep("agentInfo");
+    setUser({
+      firsName: values?.firstName,
+      lastName: values?.lastName,
+    });
   };
   return { initialValues, validationSchema, onSubmit };
 };
