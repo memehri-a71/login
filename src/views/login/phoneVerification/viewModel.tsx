@@ -1,4 +1,3 @@
-
 import {
   axiosPost,
   CREATE_OTP,
@@ -7,18 +6,24 @@ import {
   useMutation,
   yup,
 } from "../imports";
+import type {
+  InitialValuesPhoneVerification,
+  UsePhoneVerificationType,
+} from "../imports";
 
-export const usePhoneVerificationViewModel = () => {
+export const usePhoneVerificationViewModel = (): UsePhoneVerificationType => {
   const { setCurStep, setPhoneNumber } = useAuthContext();
   const initialValues = { phone: "" };
   const validationSchema = yup.object({
     phone: yup
       .string()
-      .matches(PHONE_REGEX, 'شماره موبایل صحیح نمی باشد.')
+      .matches(PHONE_REGEX, "شماره موبایل صحیح نمی باشد.")
       .required("این فیلد الزامی است."),
   });
 
-  const handleCreateOtp = async (body): Promise<void> => {
+  const handleCreateOtp = async (body: {
+    phone_number: string;
+  }): Promise<void> => {
     await axiosPost({
       url: CREATE_OTP,
       body,
@@ -28,7 +33,7 @@ export const usePhoneVerificationViewModel = () => {
     mutationFn: (e) => handleCreateOtp(e),
   });
 
-  const onSubmit = async (values: any) => {
+  const onSubmit = async (values: InitialValuesPhoneVerification) => {
     const body = {
       phone_number: values?.phone,
     };

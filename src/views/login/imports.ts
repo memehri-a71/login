@@ -34,10 +34,12 @@ import { useDebounce } from "../../hook/useDebounce";
 import { showError } from "../../hook/useToust";
 import { Dashboard } from "../dashboard";
 import { PHONE_REGEX } from "../../constants/constant";
-import type {
-  InitialValuesType,
-  UseUserInfoType,
-} from "../../types/userInfo";
+import type { InitialValuesType, UseUserInfoType } from "../../types/userInfo";
+
+import {
+  InitialValuesPhoneVerification,
+  UsePhoneVerificationType,
+} from "../../types/phoneVerification";
 
 export {
   yup,
@@ -77,4 +79,9 @@ export {
   showError,
 };
 
-export type { InitialValuesType, UseUserInfoType };
+export type {
+  InitialValuesType,
+  UseUserInfoType,
+  InitialValuesPhoneVerification,
+  UsePhoneVerificationType,
+};
