@@ -1,3 +1,4 @@
+import { showError } from "../../hook/useToust";
 import { axiosInstance } from "./interceptor";
 
 export const axiosGet = async ({ url }): Promise<any> => {
@@ -24,6 +25,9 @@ export const axiosPost = async ({ url, body }) => {
 
     return res.data;
   } catch (error) {
-    throw error;
+    const newError = error?.response?.data;
+    if (newError?.status_code == 400) {
+      showError(newError?.error_details?.fa_details);
+    }
   }
 };
