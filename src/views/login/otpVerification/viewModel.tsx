@@ -1,13 +1,11 @@
 import * as yup from "yup";
-import { useAuthContextValue } from "../../../context/auth/authContextValue";
-import { usePhoneVerificationViewModel } from "../phoneVerification/viewModel";
 import { useMutation } from "@tanstack/react-query";
-import { VALIDATE_OTP } from "../../../constants/endPoints";
+import { CREATE_OTP, VALIDATE_OTP } from "../../../constants/endPoints";
 import { axiosPost } from "../../../configs/httpService/httpService";
+import { useAuthContext } from "../../../context/auth/useAuthContext";
 
 export const useOtpVerificationViewModel = () => {
-  const { phoneNumber } = useAuthContextValue();
-  const { onSubmit } = usePhoneVerificationViewModel();
+  const {setCurStep, phoneNumber } = useAuthContext();
 
   const validationSchema = yup.object({
     name0: yup.number().required(),
@@ -25,30 +23,42 @@ export const useOtpVerificationViewModel = () => {
     name4: "",
   };
 
-  const resendCode = () => {
-    onSubmit({ phone: phoneNumber });
+  const handleCreateOtp = async (body): Promise<void> => {
+    await axiosPost({
+      url: CREATE_OTP,
+      body,
+    });
+  };
+  const { mutateAsync: mutateAsyncOtp } = useMutation({
+    mutationFn: (e) => handleCreateOtp(e),
+  });
+  const resendCode = async () => {
+    const body = {
+      phone_number: phoneNumber,
+    };
+    await mutateAsyncOtp(body as any);
   };
 
   const handleSendOtp = async (body): Promise<void> => {
     await axiosPost({ url: VALIDATE_OTP, body });
   };
-  const { mutateAsync, isPending } = useMutation({
+  const { mutateAsync,isPending } = useMutation({
     mutationFn: (e) => handleSendOtp(e),
   });
-
   const onSubmithandler = async (values: any) => {
     const otpCode = Object.values(values).join("");
     const body = {
       code: otpCode,
-      Phone_number: phoneNumber,
+      phone_number: phoneNumber,
     };
-    await mutateAsync(body as any);
+
+    await mutateAsync(body as any).then(() => setCurStep("userInfo"));
   };
 
   return {
     validationSchema,
     initialValues,
     onSubmit: onSubmithandler,
-    resendCode,
+    resendCode,isPending
   };
 };

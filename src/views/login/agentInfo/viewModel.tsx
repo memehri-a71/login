@@ -7,11 +7,11 @@ import {
 } from "../../../constants/endPoints";
 import { useMutation } from "@tanstack/react-query";
 import { useDebounce } from "../../../hook/useDebounce";
-import { useAuthContextValue } from "../../../context/auth/authContextValue";
 import { showError } from "../../../hook/useToust";
+import { useAuthContext } from "../../../context/auth/useAuthContext";
 
 export const useAgentInfoViewModel = () => {
-  const { curStep, setCurStep } = useAuthContextValue();
+  const { user, setCurStep } = useAuthContext();
   const initialValues = {
     address: "",
     province: "",
@@ -40,54 +40,55 @@ export const useAgentInfoViewModel = () => {
     }),
   });
 
-  const handleSearch = async (body): Promise<void> => {
-    await axiosPost({ url: CHECK_AGENCY_CODE, body }).catch((error) =>
-      showError(error)
-    );
-  };
-  const handleSearchAgentCode = useDebounce((term: string | number) => {
-    const body = { agent_code: term };
-    mutateAgencyCode(body as any);
-  }, 1000);
-
+  //search insurance branch
   const handleSearchInsuranceBranch = useDebounce(({ term, provinceId }) => {
     axiosGet({
       url: `${INSURANCE_BRANCH}?name=${term}&insurance=DEY&province=${provinceId}`,
     });
   }, 1000);
 
-  const handleCreateOtp = async (body): Promise<void> => {
-    await axiosPost({ url: VALIDATE_OTP, body });
-  };
 
-  const { mutate: mutateAgencyCode } = useMutation({
+  const handleSearch = async (body): Promise<void> => {
+    await axiosPost({ url: CHECK_AGENCY_CODE, body });
+  };
+  const { mutateAsync ,isPending} = useMutation({
     mutationFn: (e) => handleSearch(e),
   });
 
-  const { mutateAsync, isPending } = useMutation({
-    mutationFn: (e) => handleCreateOtp(e),
-  });
+    //search agent code
+  const handleSearchAgentCode = useDebounce((term: string | number) => {
+    const body = { agent_code: term };
+    mutateAsync(body as any);
+  }, 1000);
 
+  //
+  // const handleAgencyForm = async (body): Promise<void> => {
+  //   await axiosPost({ url: VALIDATE_OTP, body });
+  // };
+  // const { mutateAsync, isPending } = useMutation({
+  //   mutationFn: (e) => handleAgencyForm(e),
+  // });
+  
   const onSubmit = async (values: any) => {
     console.log("values", values);
     const body = {
       address: values?.address,
-      type_agency: values?.agencyType,
-      code_agent: values?.agencyCode,
-      code_city: values?.cityCode,
+      agency_type: values?.agencyType,
+      agent_code: values?.agencyCode,
+      city_code: values?.cityCode,
       county: values?.city?.name,
-      first_name: "values?.first_name",
-      name_last: "values?.name_last",
-      branch_insurance: values?.insuranceBranch?.id,
+      first_name: user?.firstName,
+      last_name: user?.lastName,
+      insurance_branch: values?.insuranceBranch?.id,
       phone: values?.phone,
       phone_number: "09101659246",
       province: values?.province?.id,
-      name_agency: values?.agencyName,
+      agency_name: values?.agencyName,
     };
     if (values?.agencyType == "real") {
-      delete body.name_agency;
+      delete body.agency_name;
     }
-    await setCurStep("userInfo");
+
     await mutateAsync(body as any);
   };
 

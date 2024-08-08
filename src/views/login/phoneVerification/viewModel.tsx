@@ -2,23 +2,18 @@ import { useMutation } from "@tanstack/react-query";
 import * as yup from "yup";
 import { axiosPost } from "../../../configs/httpService/httpService";
 import { CREATE_OTP } from "../../../constants/endPoints";
-import { useAuthContextValue } from "../../../context/auth/authContextValue";
+import { useAuthContext } from "../../../context/auth/useAuthContext";
 
 export const usePhoneVerificationViewModel = () => {
-  const { setCurStep, setPhoneNumber } = useAuthContextValue();
+  const {setCurStep, setPhoneNumber } = useAuthContext();
   const initialValues = { phone: "" };
   const validationSchema = yup.object({
     phone: yup.string().required("این فیلد الزامی است."),
   });
 
   const handleCreateOtp = async (body): Promise<void> => {
-    // await fetch(
-    //   "https://cors-anywhere.horokuapp.com/https://stage-api.sanaap.co/api/v2/app/DEY/agent/verification/signup/create_otp"
-    // )
-    //   .then((res) => res.json())
-    //   .then((res) => console.log(res));
     await axiosPost({
-      url: "https://stage-api.sanaap.co/api/v2/app/DEY/agent/verification/signup/create_otp",
+      url: CREATE_OTP,
       body,
     });
   };
@@ -27,13 +22,13 @@ export const usePhoneVerificationViewModel = () => {
   });
 
   const onSubmit = async (values: any) => {
-    console.log("values", values);
-    setPhoneNumber(values?.phone);
     const body = {
       phone_number: values?.phone,
     };
-    setCurStep("userInfo");
-    await mutateAsync(body as any);
+    await mutateAsync(body as any).then(() => {
+      setCurStep("otp");
+      setPhoneNumber(values?.phone);
+    });
   };
   return { initialValues, validationSchema, onSubmit, isPending };
 };

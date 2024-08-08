@@ -4,9 +4,9 @@ import { AuthLayout } from "../../../components/layouts/authLayout";
 import { PhoneVerificationView } from "./view";
 import { usePhoneVerificationViewModel } from "./viewModel";
 
-export const PhoneVerification = ({setCurStep}) => {
+export const PhoneVerification = () => {
   const { initialValues, validationSchema, onSubmit,isPending } =
-    usePhoneVerificationViewModel(setCurStep);
+    usePhoneVerificationViewModel();
   return (
     <AuthLayout
       initialValues={initialValues}

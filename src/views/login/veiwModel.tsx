@@ -2,20 +2,19 @@ import { AgentInfo } from "./agentInfo";
 import { OtpVerification } from "./otpVerification";
 import { PhoneVerification } from "./phoneVerification";
 import { UserInfo } from "./useInfo";
+import { useAuthContext } from "../../context/auth/useAuthContext";
 
 export const useLoginVeiwModel = () => {
-  // const [curStep, setCurStep] = useState("phone");
-  // console.log("curStep", curStep);
-  // const { curStep, setCurStep } = useAuthContextValue();
+  const { curStep } = useAuthContext();
 
   const routeStepMapping = {
     phone: PhoneVerification,
-    userInfo: UserInfo,
     otp: OtpVerification,
+    userInfo: UserInfo,
     agentInfo: AgentInfo,
   };
 
-  const CurrentAuthComponent = routeStepMapping["phone"];
+  const CurrentAuthComponent = routeStepMapping[curStep];
 
   return { CurrentAuthComponent };
 };
