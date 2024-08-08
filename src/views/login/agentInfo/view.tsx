@@ -19,9 +19,7 @@ export const AgentInfoView = ({
       <FormikTextField
         name="agencyCode"
         placeholder="کد نمایندگی"
-        onChange={(e) =>
-          handleSearchAgentCode(e.target.value)
-        }
+        onChange={(e) => handleSearchAgentCode(e.target.value)}
       />
       <FormikAutoComplete
         name="province"
