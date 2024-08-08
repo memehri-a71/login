@@ -1,4 +1,5 @@
-import { AuthLayout } from "../../../components/authLayout";
+
+import { AuthLayout } from "../../../components/layouts/authLayout";
 import { AgentInfoView } from "./view";
 import { useAgentInfoViewModel } from "./viewModel";
 

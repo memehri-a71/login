@@ -1,4 +1,5 @@
-import { AuthLayout } from "../../../components/authLayout";
+
+import { AuthLayout } from "../../../components/layouts/authLayout";
 import { OtpVerificationView } from "./view";
 import { useOtpVerificationViewModel } from "./viewModel";
 

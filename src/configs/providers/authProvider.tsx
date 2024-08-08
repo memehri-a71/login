@@ -1,5 +1,5 @@
-import { AuthContext } from "../../context";
-import { useAuthContextValue } from "../../context/authContextValue";
+import { AuthContext } from "../../context/auth";
+import { useAuthContextValue } from "../../context/auth/authContextValue";
 import { Children } from "../../types/common";
 
 export const AuthProvider = ({ children }: Children) => {

@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { useAuthContextValue } from "../../../context/authContextValue";
+import { useAuthContextValue } from "../../../context/auth/authContextValue";
 import { usePhoneVerificationViewModel } from "../phoneVerification/viewModel";
 import { useMutation } from "@tanstack/react-query";
 import { VALIDATE_OTP } from "../../../constants/endPoints";

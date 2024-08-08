@@ -1,5 +1,6 @@
-import { CustomButton } from "./elements/customButton";
-import { FormikWrapper } from "./form/formikWrapper";
+import { CustomButton } from "../elements/button/customButton";
+import { FormikWrapper } from "../form/formikWrapper";
+
 
 export const AuthLayout = (props: any) => {
   const { initialValues, validationSchema, onSubmit, children } = props;

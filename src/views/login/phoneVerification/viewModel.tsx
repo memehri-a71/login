@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import * as yup from "yup";
 import { axiosPost } from "../../../configs/httpService/httpService";
 import { CREATE_OTP } from "../../../constants/endPoints";
-import { useAuthContextValue } from "../../../context/authContextValue";
+import { useAuthContextValue } from "../../../context/auth/authContextValue";
 
 export const usePhoneVerificationViewModel = () => {
   const { setCurStep, setPhoneNumber } = useAuthContextValue();
@@ -12,8 +12,13 @@ export const usePhoneVerificationViewModel = () => {
   });
 
   const handleCreateOtp = async (body): Promise<void> => {
+    // await fetch(
+    //   "https://cors-anywhere.horokuapp.com/https://stage-api.sanaap.co/api/v2/app/DEY/agent/verification/signup/create_otp"
+    // )
+    //   .then((res) => res.json())
+    //   .then((res) => console.log(res));
     await axiosPost({
-      url: "https://stage-api.sanaap.co/api/v2/app/DEY/agent/verification/signup/create_otp/",
+      url: "https://stage-api.sanaap.co/api/v2/app/DEY/agent/verification/signup/create_otp",
       body,
     });
   };

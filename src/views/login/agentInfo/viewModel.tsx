@@ -7,7 +7,7 @@ import {
 } from "../../../constants/endPoints";
 import { useMutation } from "@tanstack/react-query";
 import { useDebounce } from "../../../hook/useDebounce";
-import { useAuthContextValue } from "../../../context/authContextValue";
+import { useAuthContextValue } from "../../../context/auth/authContextValue";
 import { showError } from "../../../hook/useToust";
 
 export const useAgentInfoViewModel = () => {

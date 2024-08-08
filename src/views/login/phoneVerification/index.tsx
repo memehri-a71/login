@@ -1,5 +1,6 @@
 
-import { AuthLayout } from "../../../components/authLayout";
+
+import { AuthLayout } from "../../../components/layouts/authLayout";
 import { PhoneVerificationView } from "./view";
 import { usePhoneVerificationViewModel } from "./viewModel";
 
