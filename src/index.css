@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,7 +9,7 @@
 
   color-scheme: light dark;
   color: black;
-  background-color: rgb(242, 238, 238); 
+  background-color: rgb(242, 238, 238);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -18,3 +17,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+  --primary-color: #0099a8;
+}
