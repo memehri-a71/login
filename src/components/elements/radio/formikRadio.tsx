@@ -1,4 +1,3 @@
-"use client";
 
 import { Field } from "formik";
 import type { FieldAttributes } from "formik";

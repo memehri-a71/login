@@ -20,3 +20,27 @@
 :root {
   --primary-color: #0099a8;
 }
+
+@font-face {
+  font-family: 'iranSans';
+  src: url('/fonts/FaNum/IRANSansXFaNum-Regular.woff');
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'iranSansBold';
+  src: url('/fonts/FaNum/IRANSansXFaNum-Bold.ttf');
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'iranSansEnB';
+  src: url('/fonts/IRANSansX-Bold.ttf');
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'iranSansEn';
+  src: url('/fonts/IRANSansX-Regular.ttf');
+  font-display: block;
+}
